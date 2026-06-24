@@ -15,7 +15,6 @@
   --text: #1a1a18;
   --text-muted: #6b6b65;
   --radius: 14px;
-  --radius-sm: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,21 +36,9 @@ body {
   padding: 2rem;
 }
 
-.page-header {
-  max-width: 860px;
-  margin: 0 auto 2rem;
-}
-
-.page-header h1 {
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
-.page-header p {
-  font-size: 13px;
-  color: var(--text-muted);
-}
+.page-header { max-width: 860px; margin: 0 auto 2rem; }
+.page-header h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+.page-header p { font-size: 13px; color: var(--text-muted); }
 
 .grid {
   max-width: 860px;
@@ -61,120 +48,68 @@ body {
   gap: 12px;
 }
 
+/* Carte : flex colonne, les métriques poussées en bas */
 .card {
   background: var(--surface);
   border: 0.5px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem 1rem 1.25rem;
   text-align: center;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  color: inherit;
   cursor: pointer;
   transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-  text-decoration: none;
-  display: block;
-  color: inherit;
 }
+.card:hover { transform: translateY(-3px); border-color: var(--border-hover); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+.card-disabled { opacity: 0.6; cursor: default; pointer-events: none; }
 
-.card:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-hover);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
-}
+/* Avatar */
+.avatar-wrap { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; margin: 0 auto 12px; border: 2px solid var(--border); flex-shrink: 0; }
+.avatar-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
-.avatar-wrap {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 12px;
-  border: 2px solid var(--border);
-}
-
-.avatar-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-.avatar-fallback {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
+/* Lignes fixes — centrage vertical garanti */
+.row-name {
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  font-weight: 500;
-  color: white;
-  margin: 0 auto 12px;
-  letter-spacing: 0.5px;
-}
-
-.cand-name {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 3px;
-  line-height: 1.3;
-}
-
-.cand-party {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-bottom: 9px;
-}
-
-.badge {
-  display: inline-block;
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  margin-bottom: 12px;
-}
-
-.b-green  { background: #eaf3de; color: #27500a; }
-.b-orange { background: #faeeda; color: #633806; }
-.b-gray   { background: #f1efe8; color: #5f5e5a; }
-
-.deficit-section {
-  border-top: 0.5px solid var(--border);
-  padding-top: 10px;
-}
-
-.deficit-label {
-  font-size: 10px;
-  color: var(--text-muted);
-  margin-bottom: 5px;
-  text-align: left;
-}
-
-.bar-track {
-  height: 5px;
-  background: var(--bg);
-  border-radius: 3px;
   overflow: hidden;
 }
-
-.bar-fill {
-  height: 100%;
-  border-radius: 3px;
+.row-party {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.row-badge {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.bar-val {
-  font-size: 11px;
-  font-weight: 500;
-  text-align: right;
-  margin-top: 3px;
-}
+.cand-name { font-size: 13px; font-weight: 500; line-height: 1.3; }
+.cand-party { font-size: 11px; color: var(--text-muted); }
 
-.footer {
-  max-width: 860px;
-  margin: 1.5rem auto 0;
-  font-size: 11px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
+.badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; }
+.b-green  { background: #eaf3de; color: #27500a; }
+.b-orange { background: #faeeda; color: #633806; }
 
+/* Métriques poussées en bas */
+.cred-section { border-top: 0.5px solid var(--border); padding-top: 9px; margin-bottom: 9px; margin-top: auto; }
+.cred-label { font-size: 10px; color: var(--text-muted); margin-bottom: 5px; text-align: left; }
+.dots { display: inline-flex; gap: 3px; align-items: center; }
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+
+.deficit-section { border-top: 0.5px solid var(--border); padding-top: 10px; }
+.deficit-label { font-size: 10px; color: var(--text-muted); margin-bottom: 5px; text-align: left; }
+.bar-track { height: 5px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 3px; }
+.bar-val { font-size: 11px; font-weight: 500; text-align: right; margin-top: 3px; }
+
+.footer { max-width: 860px; margin: 1.5rem auto 0; font-size: 11px; color: var(--text-muted); line-height: 1.6; }
 .footer a { color: var(--text-muted); }
 </style>
 </head>
@@ -182,18 +117,27 @@ body {
 
 <div class="page-header">
   <h1>Présidentielle 2027 — Programmes économiques</h1>
-  <p>Dépenses &amp; recettes · Sources officielles · Indice de crédibilité</p>
+  <p>Dépenses &amp; recettes · Sources officielles · Indice de crédibilité des recettes</p>
 </div>
 
 <div class="grid">
 
+  <!-- MÉLENCHON -->
   <a class="card" href="candidats/melenchon.html">
-    <div class="avatar-wrap">
-      <img src="candidats/Mélenchon.png" alt="Jean-Luc Mélenchon">
+    <div class="avatar-wrap"><img src="candidats/Mélenchon.png" alt="Jean-Luc Mélenchon"></div>
+    <div class="row-name"><span class="cand-name">Jean-Luc Mélenchon</span></div>
+    <div class="row-party"><span class="cand-party">La France Insoumise</span></div>
+    <div class="row-badge"><span class="badge b-green">Candidat déclaré</span></div>
+    <div class="cred-section">
+      <div class="cred-label">Crédibilité des recettes</div>
+      <span class="dots">
+        <span class="dot" style="background:#d85a30"></span>
+        <span class="dot" style="background:#d85a30"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+      </span>
     </div>
-    <div class="cand-name">Jean-Luc Mélenchon</div>
-    <div class="cand-party">La France Insoumise</div>
-    <span class="badge b-green">Candidat déclaré</span>
     <div class="deficit-section">
       <div class="deficit-label">Déficit projeté 2030</div>
       <div class="bar-track"><div class="bar-fill" style="width:74%; background:#e24b4a"></div></div>
@@ -201,13 +145,22 @@ body {
     </div>
   </a>
 
-  <a class="card" href="candidats/rn.html">
-    <div class="avatar-wrap">
-      <img src="candidats/Bardella.jpg" alt="Jordan Bardella">
+  <!-- BARDELLA -->
+  <a class="card" href="candidats/bardella.html">
+    <div class="avatar-wrap"><img src="candidats/Bardella.jpg" alt="Jordan Bardella"></div>
+    <div class="row-name"><span class="cand-name">Jordan Bardella</span></div>
+    <div class="row-party"><span class="cand-party">Rassemblement National</span></div>
+    <div class="row-badge"><span class="badge b-orange">Candidat conditionnel</span></div>
+    <div class="cred-section">
+      <div class="cred-label">Crédibilité des recettes</div>
+      <span class="dots">
+        <span class="dot" style="background:#e24b4a"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+      </span>
     </div>
-    <div class="cand-name">Jordan Bardella</div>
-    <div class="cand-party">Rassemblement National</div>
-    <span class="badge b-orange">Candidat conditionnel</span>
     <div class="deficit-section">
       <div class="deficit-label">Déficit projeté 2030</div>
       <div class="bar-track"><div class="bar-fill" style="width:60%; background:#d85a30"></div></div>
@@ -215,27 +168,45 @@ body {
     </div>
   </a>
 
-  <a class="card" href="candidats/glucksmann.html">
-    <div class="avatar-wrap">
-      <img src="candidats/Glucksmann.webp" alt="Raphaël Glucksmann">
+  <!-- GLUCKSMANN -->
+  <div class="card card-disabled">
+    <div class="avatar-wrap"><img src="candidats/Glucksmann.webp" alt="Raphaël Glucksmann"></div>
+    <div class="row-name"><span class="cand-name">Raphaël Glucksmann</span></div>
+    <div class="row-party"><span class="cand-party">Place Publique / PS</span></div>
+    <div class="row-badge"><span class="badge b-orange">Candidature en préparation</span></div>
+    <div class="cred-section">
+      <div class="cred-label">Crédibilité des recettes</div>
+      <span class="dots">
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+      </span>
     </div>
-    <div class="cand-name">Raphaël Glucksmann</div>
-    <div class="cand-party">Place Publique / PS</div>
-    <span class="badge b-orange">Candidature en préparation</span>
     <div class="deficit-section">
       <div class="deficit-label">Déficit projeté 2030</div>
       <div class="bar-track"><div class="bar-fill" style="width:56%; background:#d85a30"></div></div>
       <div class="bar-val" style="color:#854f0b">−5,6% PIB</div>
     </div>
-  </a>
+  </div>
 
+  <!-- PHILIPPE -->
   <a class="card" href="candidats/philippe.html">
-    <div class="avatar-wrap">
-      <img src="candidats/Philippe.jpg" alt="Édouard Philippe">
+    <div class="avatar-wrap"><img src="candidats/Philippe.jpg" alt="Édouard Philippe"></div>
+    <div class="row-name"><span class="cand-name">Édouard Philippe</span></div>
+    <div class="row-party"><span class="cand-party">Horizons</span></div>
+    <div class="row-badge"><span class="badge b-green">Candidat déclaré</span></div>
+    <div class="cred-section">
+      <div class="cred-label">Crédibilité des recettes</div>
+      <span class="dots">
+        <span class="dot" style="background:#ef9f27"></span>
+        <span class="dot" style="background:#ef9f27"></span>
+        <span class="dot" style="background:#ef9f27"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+      </span>
     </div>
-    <div class="cand-name">Édouard Philippe</div>
-    <div class="cand-party">Horizons</div>
-    <span class="badge b-green">Candidat déclaré</span>
     <div class="deficit-section">
       <div class="deficit-label">Déficit projeté 2030</div>
       <div class="bar-track"><div class="bar-fill" style="width:38%; background:#ef9f27"></div></div>
@@ -243,25 +214,35 @@ body {
     </div>
   </a>
 
-  <a class="card" href="candidats/retailleau.html">
-    <div class="avatar-wrap">
-      <img src="candidats/Retailleau.jpg" alt="Bruno Retailleau">
+  <!-- RETAILLEAU -->
+  <div class="card card-disabled">
+    <div class="avatar-wrap"><img src="candidats/Retailleau.jpg" alt="Bruno Retailleau"></div>
+    <div class="row-name"><span class="cand-name">Bruno Retailleau</span></div>
+    <div class="row-party"><span class="cand-party">Les Républicains</span></div>
+    <div class="row-badge"><span class="badge b-green">Candidat désigné</span></div>
+    <div class="cred-section">
+      <div class="cred-label">Crédibilité des recettes</div>
+      <span class="dots">
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+        <span class="dot" style="background:#d3d1c7"></span>
+      </span>
     </div>
-    <div class="cand-name">Bruno Retailleau</div>
-    <div class="cand-party">Les Républicains</div>
-    <span class="badge b-green">Candidat désigné</span>
     <div class="deficit-section">
       <div class="deficit-label">Déficit projeté 2030</div>
       <div class="bar-track"><div class="bar-fill" style="width:39%; background:#ef9f27"></div></div>
       <div class="bar-val" style="color:#854f0b">−3,9% PIB</div>
     </div>
-  </a>
+  </div>
 
 </div>
 
 <div class="footer">
-  Déficit projeté : <a href="https://francebudget.fr" target="_blank">France Budget</a> (outil citoyen indépendant, méthodologie publique) · Barre calibrée sur −10% PIB max ·
-  Sources programmes : déclarations officielles des candidats + Plan Justice Fiscale LFI 2022
+  Crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · ○○○○○ = données insuffisantes ·
+  Déficit projeté : <a href="https://francebudget.fr" target="_blank">France Budget</a> (outil citoyen indépendant) · Barre calibrée sur −10% PIB max ·
+  Sources : déclarations officielles des candidats · Plan Justice Fiscale LFI 2022
 </div>
 
 </body>
