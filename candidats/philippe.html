@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Édouard Philippe — Programme économique 2027</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f5f4f0; --surface: #fff; --border: rgba(0,0,0,0.09);
+  --text: #1a1a18; --text-muted: #6b6b65; --radius: 12px;
+  --party: #007ab8;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #181816; --surface: #232321; --border: rgba(255,255,255,0.09); --text: #eeebe4; --text-muted: #9a9890; }
+}
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem; font-size: 14px; line-height: 1.5; }
+.wrap { max-width: 980px; margin: 0 auto; }
+
+.back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); text-decoration: none; border: 0.5px solid var(--border); background: var(--surface); padding: 6px 12px; border-radius: 8px; margin-bottom: 1.5rem; }
+.back:hover { color: var(--text); border-color: rgba(0,0,0,0.2); }
+
+.cand-header { display: flex; align-items: center; gap: 16px; margin-bottom: 1.25rem; }
+.avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--party); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 500; color: white; flex-shrink: 0; overflow: hidden; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.cand-name { font-size: 20px; font-weight: 500; margin-bottom: 2px; }
+.cand-party { font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+.badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.badge { font-size: 11px; padding: 2px 9px; border-radius: 10px; }
+.b-green { background: #eaf3de; color: #27500a; }
+.b-blue  { background: #e6f1fb; color: #0c447c; }
+.b-orange { background: #faeeda; color: #633806; }
+.b-red   { background: #fcebeb; color: #791f1f; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 10px; }
+.kpi-row2 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }
+.kpi { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+.kpi label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 5px; }
+.kpi .val { font-size: 18px; font-weight: 500; }
+.kpi .sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+.kpi-wide { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+.kpi-wide label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
+.grp-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12px; }
+.grp-row:last-child { margin-bottom: 0; }
+.grp-label { width: 70px; color: var(--text-muted); flex-shrink: 0; font-size: 11px; }
+.grp-bar-wrap { flex: 1; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.grp-bar { height: 100%; border-radius: 3px; }
+.grp-val { width: 80px; text-align: right; font-weight: 500; font-size: 12px; flex-shrink: 0; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; font-size: 11px; color: var(--text-muted); }
+.legend span { display: flex; align-items: center; gap: 4px; }
+.lsq { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+.col-head { font-size: 13px; font-weight: 500; padding: 10px 14px; border-radius: var(--radius) var(--radius) 0 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+.head-dep { background: #faece7; color: #993c1d; }
+.head-rec { background: #e6f1fb; color: #0c447c; }
+.toggle-btn { font-size: 11px; font-weight: 400; opacity: 0.75; }
+
+.prog-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 0.5px solid var(--border); border-radius: 0 0 var(--radius) var(--radius); overflow: hidden; }
+.prog-table th { font-size: 11px; font-weight: 500; color: var(--text-muted); text-align: left; padding: 7px 12px; background: var(--bg); border-bottom: 0.5px solid var(--border); }
+.prog-table th.r { text-align: right; }
+.prog-table td { padding: 8px 12px; border-bottom: 0.5px solid var(--border); vertical-align: top; font-size: 13px; }
+.prog-table tr:last-child td { border-bottom: none; }
+.prog-table td.amount { text-align: right; font-weight: 500; white-space: nowrap; }
+.neg { color: #a32d2d; } .pos { color: #0f6e56; } .muted { color: var(--text-muted); }
+.tot td { background: var(--bg); font-weight: 500; }
+.row-detail { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+.tag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 4px; margin-top: 3px; }
+.tag-off { background: #e6f1fb; color: #0c447c; }
+.tag-est { background: #faeeda; color: #633806; }
+
+.dots { display: inline-flex; gap: 3px; align-items: center; }
+.dot { width: 9px; height: 9px; border-radius: 50%; }
+
+.footnote { margin-top: 12px; font-size: 11px; color: var(--text-muted); padding: 10px 14px; background: var(--surface); border-radius: 8px; border: 0.5px solid var(--border); line-height: 1.6; }
+
+@media (max-width: 680px) {
+  .kpi-row { grid-template-columns: 1fr 1fr 1fr; } .kpi-row2 { grid-template-columns: 1fr 1fr; }
+  .cols { grid-template-columns: 1fr; }
+}
+@media (max-width: 400px) {
+  .kpi-row, .kpi-row2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../comparaison_2027.html">← Tous les candidats</a>
+
+  <div class="cand-header">
+    <div class="avatar"><img src="Philippe.png" alt="Édouard Philippe" onerror="this.outerHTML='EP'"></div>
+    <div>
+      <div class="cand-name">Édouard Philippe</div>
+      <div class="cand-party">Horizons</div>
+      <div class="badges">
+        <span class="badge b-green">Candidat déclaré</span>
+        <span class="badge b-orange">Programme non publié — déclarations seulement</span>
+        <span class="badge b-blue">Déficit projeté −3,8% PIB 2030</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDICATEURS -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <label>Part de l'État dans le PIB</label>
+      <div class="val">~57% → ~54-55%</div>
+      <div class="sub">−2 à −3 pts (programme annoncé)</div>
+    </div>
+    <div class="kpi">
+      <label>Déficit projeté 2030</label>
+      <div class="val" style="color:#ef9f27">−3,8% PIB</div>
+      <div class="sub">France Budget — proxy Renaissance</div>
+    </div>
+    <div class="kpi">
+      <label>Dette publique 2030</label>
+      <div class="val" style="color:#ef9f27">~3 900 Md€</div>
+      <div class="sub">~120% PIB — estimation trajectoire</div>
+    </div>
+    <div class="kpi">
+      <label>Variation dette vs 2025</label>
+      <div class="val" style="color:#ef9f27">+22%</div>
+      <div class="sub">+700 Md€ vs 3 200 Md€ en 2025</div>
+    </div>
+    <div class="kpi">
+      <label>Impôts Entreprises</label>
+      <div class="val pos">~−5 à −10%</div>
+      <div class="sub">Baisse nette via CVAE + exo HS</div>
+    </div>
+  </div>
+  <div class="kpi-row2">
+    <div class="kpi-wide">
+      <label>Pouvoir d'achat des ménages</label>
+      <div class="grp-row">
+        <span class="grp-label">D1–D3</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:20%;background:#639922"></div></div>
+        <span class="grp-val pos">+1 à +2%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">D4–D7</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:40%;background:#639922"></div></div>
+        <span class="grp-val pos">+2 à +4%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">D8–D10</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:20%;background:#639922"></div></div>
+        <span class="grp-val pos">+1 à +2%</span>
+      </div>
+    </div>
+    <div class="kpi-wide">
+      <label>Hausse d'imposition — particuliers</label>
+      <div class="grp-row">
+        <span class="grp-label">D1–D3</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:2%;background:#d3d1c7"></div></div>
+        <span class="grp-val muted">0%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">D4–D7</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:2%;background:#d3d1c7"></div></div>
+        <span class="grp-val muted">0%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">D8–D10</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:2%;background:#d3d1c7"></div></div>
+        <span class="grp-val muted">0%</span>
+      </div>
+    </div>
+    <div class="kpi-wide">
+      <label>Hausse d'imposition — entreprises</label>
+      <div class="grp-row">
+        <span class="grp-label">PME</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:60%;background:#639922"></div></div>
+        <span class="grp-val pos">−5 à −8%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">ETI</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:40%;background:#639922"></div></div>
+        <span class="grp-val pos">−3 à −5%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">Grands groupes</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:25%;background:#639922"></div></div>
+        <span class="grp-val pos">−2 à −3%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LÉGENDE -->
+  <div class="legend">
+    <span><span class="lsq" style="background:#639922"></span>Crédible ●●●●○</span>
+    <span><span class="lsq" style="background:#ef9f27"></span>Incertain ●●●○○</span>
+    <span><span class="lsq" style="background:#d85a30"></span>Peu crédible ●●○○○</span>
+    <span><span class="lsq" style="background:#e24b4a"></span>Très peu crédible ●○○○○</span>
+  </div>
+
+  <!-- DEUX COLONNES -->
+  <div class="cols">
+
+    <!-- DÉPENSES (baisses de charges = coût fiscal) -->
+    <div>
+      <div class="col-head head-dep" onclick="toggle('dep')">Dépenses supplémentaires <span class="toggle-btn" id="dep-btn">▼ Détail</span></div>
+      <table class="prog-table">
+        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Coût / an</th></tr></thead>
+        <tbody>
+          <tr class="detail-dep" style="display:none">
+            <td>Suppression de la CVAE
+              <div class="row-detail">Cotisation sur la valeur ajoutée des entreprises. Mesure déjà partiellement engagée sous Macron (−4 Md€ en 2023).</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount neg">~10 Md€</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Bouclier de cotisations patronales (1–2,5 SMIC)
+              <div class="row-detail">Exonération partielle ou totale pour les salaires entre 1 et 2,5 SMIC. Vise à réduire le coût du travail sur la classe moyenne.</div>
+              <span class="tag tag-est">Estimation</span>
+            </td>
+            <td class="amount neg">~15–20 Md€</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Exonération de cotisations sur les heures supplémentaires
+              <div class="row-detail">Suppression totale des cotisations sociales sur les HS. Précédent : loi TEPA 2007 (~4 Md€/an), renforcé par Macron en 2019.</div>
+              <span class="tag tag-est">Estimation</span>
+            </td>
+            <td class="amount neg">~3–5 Md€</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Réforme de l'impôt sur le revenu — classes moyennes
+              <div class="row-detail">Fusion de tranches et baisse ciblée pour les revenus entre 30 k€ et 80 k€/an. Mesure concrète et chiffrable.</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount neg">~5–10 Md€</td>
+          </tr>
+          <tr class="tot">
+            <td>Total dépenses estimées</td>
+            <td class="amount neg">~33–45 Md€/an</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RECETTES -->
+    <div>
+      <div class="col-head head-rec" onclick="toggle('rec')">Recettes supplémentaires <span class="toggle-btn" id="rec-btn">▼ Détail</span></div>
+      <table class="prog-table">
+        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Annoncé</th><th class="r">Ajusté</th><th>Créd.</th></tr></thead>
+        <tbody>
+          <tr class="detail-rec" style="display:none">
+            <td>Lutte contre la fraude fiscale et sociale
+              <div class="row-detail">Inclut fraude fiscale (DGFiP) et fraude sociale (CNAF, URSSAF ~6–8 Md€ identifiés). Périmètre plus large et plus recouvrable que LFI.</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount pos">+15–20 Md€</td>
+            <td class="amount muted">~9–12 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Réduction des dépenses publiques (bureaucratie)
+              <div class="row-detail">Réduction des agences, opérateurs et administrations centrales. Fonctionnaires de terrain préservés. Montant non précisé.</div>
+              <span class="tag tag-est">Estimation</span>
+            </td>
+            <td class="amount pos">~5–10 Md€</td>
+            <td class="amount muted">~2–4 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Incitations à travailler après 64 ans (bonus retraite)
+              <div class="row-detail">Maintien de l'âge légal à 64 ans mais bonus retraite pour les actifs qui prolongent leur activité. Économies nettes modestes sur le régime.</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount pos">~2–4 Md€</td>
+            <td class="amount muted">~1–2 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Taxation des superprofits (énergie, banques, grande distribution)
+              <div class="row-detail">Prélèvement exceptionnel sur les secteurs très bénéficiaires pour financer les baisses d'impôts. Périmètre non précisé.</div>
+              <span class="tag tag-est">Estimation</span>
+            </td>
+            <td class="amount pos">~3–5 Md€</td>
+            <td class="amount muted">~2–3 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Croissance économique — recettes supplémentaires
+              <div class="row-detail">Hypothèse centrale du programme : la baisse des charges relance l'emploi et la production, générant des recettes fiscales indirectes. Non chiffré.</div>
+              <span class="tag tag-est">Non chiffré</span>
+            </td>
+            <td class="amount muted">n.d.</td>
+            <td class="amount muted">—</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="tot">
+            <td>Total recettes</td>
+            <td class="amount pos">~25–40 Md€</td>
+            <td class="amount" style="color:#a32d2d">~14–21 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="footnote">
+    ⚠️ Programme non publié à ce jour — page basée sur les déclarations publiques d'Édouard Philippe (interviews, discours). À mettre à jour dès la publication du programme complet. ·
+    Méthode crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · Recette ajustée = montant × (score/5) ·
+    Sources : <a href="https://www.publicsenat.fr/actualites/economie/entreprises-un-deal-a-250-milliards-deuros-sur-un-quinquennat-que-represente-la-proposition-dedouard-philippe" target="_blank">Public Sénat — Deal 250 Md€</a> ·
+    <a href="https://francebudget.fr/scenarios/renaissance-2027" target="_blank">France Budget — proxy Renaissance</a>
+  </div>
+
+</div>
+<script>
+function toggle(col) {
+  var rows = document.querySelectorAll('.detail-' + col);
+  var btn = document.getElementById(col + '-btn');
+  var open = btn.textContent.indexOf('▼') !== -1;
+  rows.forEach(function(el) { el.style.display = open ? '' : 'none'; });
+  btn.textContent = open ? '▲ Masquer' : '▼ Détail';
+}
+</script>
+</body>
+</html>
