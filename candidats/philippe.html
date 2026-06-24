@@ -72,6 +72,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
 .dots { display: inline-flex; gap: 3px; align-items: center; }
 .dot { width: 9px; height: 9px; border-radius: 50%; }
+.cred-header { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.cred-header-label { font-size: 12px; color: var(--text-muted); }
+.dots-lg { display: inline-flex; gap: 5px; align-items: center; }
+.dot-lg { width: 16px; height: 16px; border-radius: 50%; display: inline-block; }
 
 .footnote { margin-top: 12px; font-size: 11px; color: var(--text-muted); padding: 10px 14px; background: var(--surface); border-radius: 8px; border: 0.5px solid var(--border); line-height: 1.6; }
 
@@ -98,6 +102,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <span class="badge b-green">Candidat déclaré</span>
         <span class="badge b-orange">Programme non publié — déclarations seulement</span>
         <span class="badge b-blue">Déficit projeté −3,8% PIB 2030</span>
+      </div>
+      <div class="cred-header">
+        <span class="cred-header-label">Crédibilité des recettes</span>
+        <span class="dots-lg">
+          <span class="dot-lg" style="background:#ef9f27"></span>
+          <span class="dot-lg" style="background:#ef9f27"></span>
+          <span class="dot-lg" style="background:#ef9f27"></span>
+          <span class="dot-lg" style="background:#d3d1c7"></span>
+          <span class="dot-lg" style="background:#d3d1c7"></span>
+        </span>
       </div>
     </div>
   </div>
@@ -261,8 +275,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-est">Estimation</span>
             </td>
             <td class="amount pos">~5–10 Md€</td>
-            <td class="amount muted">~2–4 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount muted">~4–8 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Incitations à travailler après 64 ans (bonus retraite)
@@ -287,15 +301,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <div class="row-detail">Hypothèse centrale du programme : la baisse des charges relance l'emploi et la production, générant des recettes fiscales indirectes. Non chiffré.</div>
               <span class="tag tag-est">Non chiffré</span>
             </td>
-            <td class="amount muted">n.d.</td>
-            <td class="amount muted">—</td>
+            <td class="amount pos">+5–15 Md€</td>
+            <td class="amount muted">~3–9 Md€</td>
             <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
           </tr>
           <tr class="tot">
             <td>Total recettes</td>
-            <td class="amount pos">~25–40 Md€</td>
-            <td class="amount" style="color:#a32d2d">~14–21 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~30–55 Md€</td>
+            <td class="amount" style="color:#a32d2d">~19–34 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
           </tr>
         </tbody>
       </table>
