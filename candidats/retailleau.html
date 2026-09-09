@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bruno Retailleau — Programme économique 2027</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f5f4f0; --surface: #fff; --border: rgba(0,0,0,0.09);
+  --text: #1a1a18; --text-muted: #6b6b65; --radius: 12px;
+  --party: #0052a5;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #181816; --surface: #232321; --border: rgba(255,255,255,0.09); --text: #eeebe4; --text-muted: #9a9890; }
+}
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem; font-size: 14px; line-height: 1.5; }
+.wrap { max-width: 980px; margin: 0 auto; }
+
+.back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); text-decoration: none; border: 0.5px solid var(--border); background: var(--surface); padding: 6px 12px; border-radius: 8px; margin-bottom: 1.5rem; }
+.back:hover { color: var(--text); border-color: rgba(0,0,0,0.2); }
+
+.cand-header { display: flex; align-items: center; gap: 16px; margin-bottom: 1.25rem; }
+.avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--party); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 500; color: white; flex-shrink: 0; overflow: hidden; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.cand-name { font-size: 20px; font-weight: 500; margin-bottom: 2px; }
+.cand-party { font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+.badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.badge { font-size: 11px; padding: 2px 9px; border-radius: 10px; }
+.b-green  { background: #eaf3de; color: #27500a; }
+.b-blue   { background: #e6f1fb; color: #0c447c; }
+.b-orange { background: #faeeda; color: #633806; }
+.b-red    { background: #fcebeb; color: #791f1f; }
+
+.cred-header { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.cred-header-label { font-size: 12px; color: var(--text-muted); }
+.dots-lg { display: inline-flex; gap: 5px; align-items: center; }
+.dot-lg { width: 16px; height: 16px; border-radius: 50%; display: inline-block; }
+
+.alert { background: #fef9e6; border: 0.5px solid #e6d44a; border-radius: var(--radius); padding: 10px 14px; margin-bottom: 1.25rem; font-size: 12px; color: #5a4800; line-height: 1.5; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 10px; }
+.kpi-row2 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }
+.kpi { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+.kpi label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 5px; }
+.kpi .val { font-size: 18px; font-weight: 500; }
+.kpi .sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+.kpi-wide { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+.kpi-wide label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
+.grp-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12px; }
+.grp-row:last-child { margin-bottom: 0; }
+.grp-label { width: 70px; color: var(--text-muted); flex-shrink: 0; font-size: 11px; }
+.grp-bar-wrap { flex: 1; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.grp-bar { height: 100%; border-radius: 3px; }
+.grp-val { width: 80px; text-align: right; font-weight: 500; font-size: 12px; flex-shrink: 0; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; font-size: 11px; color: var(--text-muted); }
+.legend span { display: flex; align-items: center; gap: 4px; }
+.lsq { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+.col-head { font-size: 13px; font-weight: 500; padding: 10px 14px; border-radius: var(--radius) var(--radius) 0 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+.head-dep { background: #faece7; color: #993c1d; }
+.head-rec { background: #e6f1fb; color: #0c447c; }
+.toggle-btn { font-size: 11px; font-weight: 400; opacity: 0.75; }
+
+.prog-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 0.5px solid var(--border); border-radius: 0 0 var(--radius) var(--radius); overflow: hidden; }
+.prog-table th { font-size: 11px; font-weight: 500; color: var(--text-muted); text-align: left; padding: 7px 12px; background: var(--bg); border-bottom: 0.5px solid var(--border); }
+.prog-table th.r { text-align: right; }
+.prog-table td { padding: 8px 12px; border-bottom: 0.5px solid var(--border); vertical-align: top; font-size: 13px; }
+.prog-table tr:last-child td { border-bottom: none; }
+.prog-table td.amount { text-align: right; font-weight: 500; white-space: nowrap; }
+.neg { color: #a32d2d; } .pos { color: #0f6e56; } .muted { color: var(--text-muted); }
+.tot td { background: var(--bg); font-weight: 500; }
+.row-detail { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+.tag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 4px; margin-top: 3px; }
+.tag-off { background: #e6f1fb; color: #0c447c; }
+.tag-est { background: #faeeda; color: #633806; }
+.tag-warn { background: #fcebeb; color: #791f1f; }
+
+.dots { display: inline-flex; gap: 3px; align-items: center; }
+.dot { width: 9px; height: 9px; border-radius: 50%; }
+
+.footnote { margin-top: 12px; font-size: 11px; color: var(--text-muted); padding: 10px 14px; background: var(--surface); border-radius: 8px; border: 0.5px solid var(--border); line-height: 1.6; }
+
+@media (max-width: 680px) {
+  .kpi-row { grid-template-columns: 1fr 1fr 1fr; } .kpi-row2 { grid-template-columns: 1fr 1fr; }
+  .cols { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../comparaison_2027.html">← Tous les candidats</a>
+
+  <div class="cand-header">
+    <div class="avatar"><img src="Retailleau.jpg" alt="Bruno Retailleau" onerror="this.outerHTML='BR'"></div>
+    <div>
+      <div class="cand-name">Bruno Retailleau</div>
+      <div class="cand-party">Les Républicains</div>
+      <div class="badges">
+        <span class="badge b-green">Candidat déclaré</span>
+        <span class="badge b-orange">Programme partiel — orientations seulement</span>
+        <span class="badge b-green">Règle d'or constitutionnelle</span>
+      </div>
+      <div class="cred-header">
+        <span class="cred-header-label">Crédibilité des économies</span>
+        <span class="dots-lg">
+          <span class="dot-lg" style="background:#d85a30"></span>
+          <span class="dot-lg" style="background:#d85a30"></span>
+          <span class="dot-lg" style="background:#d3d1c7"></span>
+          <span class="dot-lg" style="background:#d3d1c7"></span>
+          <span class="dot-lg" style="background:#d3d1c7"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert">
+    ℹ️ Page initialisée avec les premières orientations de programme. Retailleau s'inscrit dans la ligne du programme Fillon 2016 : réduction des dépenses publiques, pas de hausse de la fiscalité sur le patrimoine. Programme complet non encore publié.
+  </div>
+
+  <!-- INDICATEURS -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <label>Part de l'État dans le PIB</label>
+      <div class="val pos">~57% → ~52-53%</div>
+      <div class="sub">Objectif −120 Md€ de dépenses d'ici 2032</div>
+    </div>
+    <div class="kpi">
+      <label>Déficit projeté 2030</label>
+      <div class="val muted">Non estimé</div>
+      <div class="sub">Pas de scénario France Budget disponible</div>
+    </div>
+    <div class="kpi">
+      <label>Âge de départ à la retraite</label>
+      <div class="val" style="color:#0052a5">65 ans+</div>
+      <div class="sub">Lié à l'espérance de vie — capitali­sation complémentaire</div>
+    </div>
+    <div class="kpi">
+      <label>Impôts &amp; charges Entreprises</label>
+      <div class="val pos">−40 Md€</div>
+      <div class="sub">CVAE + C3S + CFE + charges sociales + HS</div>
+    </div>
+    <div class="kpi">
+      <label>Impôts Ménages</label>
+      <div class="val pos">Pas de hausse</div>
+      <div class="sub">Pas de hausse fiscale sur le patrimoine</div>
+    </div>
+  </div>
+  <div class="kpi-row2">
+    <div class="kpi-wide">
+      <label>Pouvoir d'achat des ménages</label>
+      <div class="grp-row">
+        <span class="grp-label">D1–D3</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:5%;background:#d3d1c7"></div></div>
+        <span class="grp-val muted">0 à +1%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">D4–D7</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:15%;background:#639922"></div></div>
+        <span class="grp-val pos">+1 à +2%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">D8–D10</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:30%;background:#639922"></div></div>
+        <span class="grp-val pos">+2 à +4%</span>
+      </div>
+    </div>
+    <div class="kpi-wide">
+      <label>Hausse d'imposition — particuliers</label>
+      <div class="grp-row">
+        <span class="grp-label">D1–D3</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:2%;background:#d3d1c7"></div></div>
+        <span class="grp-val muted">0%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">D4–D7</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:2%;background:#d3d1c7"></div></div>
+        <span class="grp-val muted">0%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">D8–D10</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:2%;background:#d3d1c7"></div></div>
+        <span class="grp-val muted">0%</span>
+      </div>
+    </div>
+    <div class="kpi-wide">
+      <label>Impact entreprises</label>
+      <div class="grp-row">
+        <span class="grp-label">PME</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:40%;background:#639922"></div></div>
+        <span class="grp-val pos">−3 à −5%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">ETI</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:30%;background:#639922"></div></div>
+        <span class="grp-val pos">−2 à −4%</span>
+      </div>
+      <div class="grp-row">
+        <span class="grp-label">Grands groupes</span>
+        <div class="grp-bar-wrap"><div class="grp-bar" style="width:20%;background:#639922"></div></div>
+        <span class="grp-val pos">−1 à −3%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LÉGENDE -->
+  <div class="legend">
+    <span><span class="lsq" style="background:#639922"></span>Crédible ●●●●○</span>
+    <span><span class="lsq" style="background:#ef9f27"></span>Incertain ●●●○○</span>
+    <span><span class="lsq" style="background:#d85a30"></span>Peu crédible ●●○○○</span>
+    <span><span class="lsq" style="background:#e24b4a"></span>Très peu crédible ●○○○○</span>
+  </div>
+
+  <!-- DEUX COLONNES -->
+  <div class="cols">
+
+    <!-- DÉPENSES -->
+    <div>
+      <div class="col-head head-dep" onclick="toggle('dep')">Dépenses supplémentaires <span class="toggle-btn" id="dep-btn">▼ Détail</span></div>
+      <table class="prog-table">
+        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Coût / an</th></tr></thead>
+        <tbody>
+          <tr class="detail-dep" style="display:none">
+            <td>Suppression des taxes de production (C3S, CVAE, CFE industriel)
+              <div class="row-detail">La CVAE est déjà en cours de suppression progressive jusqu'en 2030 sous la loi actuelle. Retailleau accélère le calendrier et y ajoute la C3S (~4 Md€) et la part industrielle de la CFE. Coût pour l'État estimé à ~15 Md€/an.</div>
+              <span class="tag tag-off">Programme LR</span>
+            </td>
+            <td class="amount neg">~−15 Md€ de recettes</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Allègement des charges sociales patronales
+              <div class="row-detail">Réforme du financement de la protection sociale pour alléger les charges patronales. Mécanisme de compensation non précisé à ce stade.</div>
+              <span class="tag tag-est">Orientations publiées</span>
+            </td>
+            <td class="amount neg">~−15 Md€ de recettes</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Exonération heures supplémentaires (IS + cotisations)
+              <div class="row-detail">Ni impôt sur le revenu ni cotisations sociales sur les heures supplémentaires.</div>
+              <span class="tag tag-off">Programme LR</span>
+            </td>
+            <td class="amount neg">~−10 Md€ de recettes</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Capitalisation complémentaire retraites
+              <div class="row-detail">Mise en place d'une épargne retraite par capitalisation complémentaire au système par répartition. Coût budgétaire direct faible, incitation fiscale à préciser.</div>
+              <span class="tag tag-est">Non chiffré</span>
+            </td>
+            <td class="amount muted">n.d.</td>
+          </tr>
+          <tr class="tot">
+            <td>Total coûts fiscaux identifiés</td>
+            <td class="amount neg">~−40 Md€/an</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ÉCONOMIES / RECETTES -->
+    <div>
+      <div class="col-head head-rec" onclick="toggle('rec')">Économies &amp; recettes <span class="toggle-btn" id="rec-btn">▼ Détail</span></div>
+      <table class="prog-table">
+        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Annoncé</th><th class="r">Ajusté</th><th>Créd.</th></tr></thead>
+        <tbody>
+          <tr class="detail-rec" style="display:none">
+            <td>Réforme de l'assurance chômage
+              <div class="row-detail">Critères d'éligibilité resserrés, plafonnement des indemnités de licenciement à 6 mois, alignement des travailleurs frontaliers, dégressivité pour les hauts revenus. Chiffrage détaillé et cohérent avec les réformes précédentes.</div>
+              <span class="tag tag-off">Programme LR</span>
+            </td>
+            <td class="amount pos">−13 Md€</td>
+            <td class="amount pos">~−8–11 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Report de l'âge légal de retraite à 65 ans (lié à l'espérance de vie)
+              <div class="row-detail">Économies progressives sur le régime général et les régimes alignés. Suppression des régimes spéciaux restants. Montant non chiffré à ce stade.</div>
+              <span class="tag tag-est">Non chiffré</span>
+            </td>
+            <td class="amount muted">n.d.</td>
+            <td class="amount muted">—</td>
+            <td><span class="dots"><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Réduction globale des dépenses publiques (−120 Md€ d'ici 2032)
+              <div class="row-detail">Objectif global très ambitieux (~−24 Md€/an), sans détail des postes à réduire au-delà de l'assurance chômage. À titre de comparaison, la réforme Fillon 2016 visait −100 Md€ sur 5 ans et n'avait jamais été mise en œuvre.</div>
+              <span class="tag tag-warn">Pas de détail des coupes</span>
+            </td>
+            <td class="amount pos">−120 Md€ / 5 ans</td>
+            <td class="amount muted">~−40–60 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="tot">
+            <td>Total économies identifiées</td>
+            <td class="amount pos">~−133 Md€/5 ans</td>
+            <td class="amount pos">~−50–70 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="footnote">
+    ⚠️ Programme complet non publié — basé sur les orientations de Bruno Retailleau (février–septembre 2026) et le programme LR. ·
+    Méthode crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · Économie ajustée = montant × (score/5) ·
+    Sources : <a href="https://monvote2027.fr/candidat/retailleau" target="_blank">MonVote2027 — programme Retailleau</a> ·
+    <a href="https://lcp.fr/actualites/presidentielle-2027-qui-propose-quoi-sur-les-retraites-437864" target="_blank">LCP — retraites 2027</a> ·
+    <a href="https://lcp.fr/actualites/presidentielle-2027-ce-qu-il-faut-retenir-du-premier-debat-entre-les-candidats-440670" target="_blank">LCP — débat Medef 27 août</a>
+  </div>
+
+</div>
+<script>
+function toggle(col) {
+  var rows = document.querySelectorAll('.detail-' + col);
+  var btn = document.getElementById(col + '-btn');
+  var open = btn.textContent.indexOf('▼') !== -1;
+  rows.forEach(function(el) { el.style.display = open ? '' : 'none'; });
+  btn.textContent = open ? '▲ Masquer' : '▼ Détail';
+}
+</script>
+</body>
+</html>
