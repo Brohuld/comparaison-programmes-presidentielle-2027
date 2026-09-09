@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raphaël Glucksmann — Programme économique 2027</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f5f4f0; --surface: #fff; --border: rgba(0,0,0,0.09);
+  --text: #1a1a18; --text-muted: #6b6b65; --radius: 12px;
+  --party: #cc0044;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #181816; --surface: #232321; --border: rgba(255,255,255,0.09); --text: #eeebe4; --text-muted: #9a9890; }
+}
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem; font-size: 14px; line-height: 1.5; }
+.wrap { max-width: 980px; margin: 0 auto; }
+
+.back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); text-decoration: none; border: 0.5px solid var(--border); background: var(--surface); padding: 6px 12px; border-radius: 8px; margin-bottom: 1.5rem; }
+.back:hover { color: var(--text); border-color: rgba(0,0,0,0.2); }
+
+.cand-header { display: flex; align-items: center; gap: 16px; margin-bottom: 1.25rem; }
+.avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--party); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 500; color: white; flex-shrink: 0; overflow: hidden; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.cand-name { font-size: 20px; font-weight: 500; margin-bottom: 2px; }
+.cand-party { font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+.badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.badge { font-size: 11px; padding: 2px 9px; border-radius: 10px; }
+.b-green  { background: #eaf3de; color: #27500a; }
+.b-blue   { background: #e6f1fb; color: #0c447c; }
+.b-orange { background: #faeeda; color: #633806; }
+.b-red    { background: #fcebeb; color: #791f1f; }
+
+.cred-header { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.cred-header-label { font-size: 12px; color: var(--text-muted); }
+.dots-lg { display: inline-flex; gap: 5px; align-items: center; }
+.dot-lg { width: 16px; height: 16px; border-radius: 50%; display: inline-block; }
+
+.alert { background: #fef9e6; border: 0.5px solid #e6d44a; border-radius: var(--radius); padding: 10px 14px; margin-bottom: 1.25rem; font-size: 12px; color: #5a4800; line-height: 1.5; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.25rem; }
+.kpi { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+.kpi label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 5px; }
+.kpi .val { font-size: 18px; font-weight: 500; }
+.kpi .sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; font-size: 11px; color: var(--text-muted); }
+.legend span { display: flex; align-items: center; gap: 4px; }
+.lsq { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+.col-head { font-size: 13px; font-weight: 500; padding: 10px 14px; border-radius: var(--radius) var(--radius) 0 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+.head-dep { background: #faece7; color: #993c1d; }
+.head-rec { background: #e6f1fb; color: #0c447c; }
+.toggle-btn { font-size: 11px; font-weight: 400; opacity: 0.75; }
+
+.prog-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 0.5px solid var(--border); border-radius: 0 0 var(--radius) var(--radius); overflow: hidden; }
+.prog-table th { font-size: 11px; font-weight: 500; color: var(--text-muted); text-align: left; padding: 7px 12px; background: var(--bg); border-bottom: 0.5px solid var(--border); }
+.prog-table th.r { text-align: right; }
+.prog-table td { padding: 8px 12px; border-bottom: 0.5px solid var(--border); vertical-align: top; font-size: 13px; }
+.prog-table tr:last-child td { border-bottom: none; }
+.prog-table td.amount { text-align: right; font-weight: 500; white-space: nowrap; }
+.neg { color: #a32d2d; } .pos { color: #0f6e56; } .muted { color: var(--text-muted); }
+.tot td { background: var(--bg); font-weight: 500; }
+.row-detail { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+.tag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 4px; margin-top: 3px; }
+.tag-off { background: #e6f1fb; color: #0c447c; }
+.tag-est { background: #faeeda; color: #633806; }
+.tag-warn { background: #fcebeb; color: #791f1f; }
+
+.dots { display: inline-flex; gap: 3px; align-items: center; }
+.dot { width: 9px; height: 9px; border-radius: 50%; }
+
+.footnote { margin-top: 12px; font-size: 11px; color: var(--text-muted); padding: 10px 14px; background: var(--surface); border-radius: 8px; border: 0.5px solid var(--border); line-height: 1.6; }
+
+@media (max-width: 680px) { .kpi-row { grid-template-columns: 1fr 1fr; } .cols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../comparaison_2027.html">← Tous les candidats</a>
+
+  <div class="cand-header">
+    <div class="avatar"><img src="Glucksmann.webp" alt="Raphaël Glucksmann" onerror="this.outerHTML='RG'"></div>
+    <div>
+      <div class="cand-name">Raphaël Glucksmann</div>
+      <div class="cand-party">Place Publique / PS</div>
+      <div class="badges">
+        <span class="badge b-green">Candidat déclaré</span>
+        <span class="badge b-orange">Programme partiel — déclarations seulement</span>
+      </div>
+      <div class="cred-header">
+        <span class="cred-header-label">Crédibilité des recettes</span>
+        <span class="dots-lg">
+          <span class="dot-lg" style="background:#d85a30"></span>
+          <span class="dot-lg" style="background:#d85a30"></span>
+          <span class="dot-lg" style="background:#d3d1c7"></span>
+          <span class="dot-lg" style="background:#d3d1c7"></span>
+          <span class="dot-lg" style="background:#d3d1c7"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert">
+    ℹ️ Page initialisée avec les premières déclarations de programme. Le programme complet de Raphaël Glucksmann n'a pas encore été publié — cette page sera mise à jour au fur et à mesure.
+  </div>
+
+  <!-- INDICATEURS -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <label>Déficit projeté 2030</label>
+      <div class="val muted">—</div>
+      <div class="sub">En attente du programme</div>
+    </div>
+    <div class="kpi">
+      <label>Dette publique 2030</label>
+      <div class="val muted">—</div>
+      <div class="sub">En attente du programme</div>
+    </div>
+    <div class="kpi">
+      <label>Impôts Entreprises</label>
+      <div class="val muted">—</div>
+      <div class="sub">Non précisé</div>
+    </div>
+    <div class="kpi">
+      <label>Impôts Ménages</label>
+      <div class="val pos">↓ hauts patrimoines</div>
+      <div class="sub">Succession >2 M€ taxée davantage</div>
+    </div>
+  </div>
+
+  <!-- LÉGENDE -->
+  <div class="legend">
+    <span><span class="lsq" style="background:#639922"></span>Crédible ●●●●○</span>
+    <span><span class="lsq" style="background:#ef9f27"></span>Incertain ●●●○○</span>
+    <span><span class="lsq" style="background:#d85a30"></span>Peu crédible ●●○○○</span>
+    <span><span class="lsq" style="background:#e24b4a"></span>Très peu crédible ●○○○○</span>
+  </div>
+
+  <!-- DEUX COLONNES -->
+  <div class="cols">
+
+    <!-- DÉPENSES -->
+    <div>
+      <div class="col-head head-dep" onclick="toggle('dep')">Dépenses supplémentaires <span class="toggle-btn" id="dep-btn">▼ Détail</span></div>
+      <table class="prog-table">
+        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Coût / an</th></tr></thead>
+        <tbody>
+          <tr class="detail-dep" style="display:none">
+            <td>Revalorisation des enseignants (+10% puis jusqu'à +25%)
+              <div class="row-detail">+10% immédiat dès l'élection, puis hausses progressives jusqu'à +25% selon la progression de carrière. Financé en partie par réduction de postes administratifs au sein de l'Éducation nationale. Coût total estimé à 6 Md€/an selon Glucksmann.</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount neg">~6 Md€</td>
+          </tr>
+          <tr class="tot">
+            <td>Total dépenses identifiées</td>
+            <td class="amount neg">~6 Md€/an</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RECETTES -->
+    <div>
+      <div class="col-head head-rec" onclick="toggle('rec')">Recettes supplémentaires <span class="toggle-btn" id="rec-btn">▼ Détail</span></div>
+      <table class="prog-table">
+        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Annoncé</th><th class="r">Ajusté</th><th>Créd.</th></tr></thead>
+        <tbody>
+          <tr class="detail-rec" style="display:none">
+            <td>Taxe sur les méga-héritages (>2 M€)
+              <div class="row-detail">Barème progressif sur les 1% héritages les plus élevés (au-dessus de 2 M€). 99% des successions non affectées. Objectif affiché : 15 Md€ transférés vers les salaires. Aucun barème détaillé ni étude de chiffrage publiée à ce stade — les experts estiment le produit réaliste entre 3 et 6 Md€.</div>
+              <span class="tag tag-est">Pas de barème détaillé</span>
+            </td>
+            <td class="amount pos">~15 Md€</td>
+            <td class="amount muted">~3–6 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Réduction de postes administratifs — Éducation nationale
+              <div class="row-detail">Redéploiement de postes administratifs vers la revalorisation salariale des enseignants. Non chiffré indépendamment.</div>
+              <span class="tag tag-est">Non chiffré</span>
+            </td>
+            <td class="amount muted">n.d.</td>
+            <td class="amount muted">—</td>
+            <td><span class="dots"><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="tot">
+            <td>Total recettes identifiées</td>
+            <td class="amount pos">~15 Md€</td>
+            <td class="amount" style="color:#a32d2d">~3–6 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="footnote">
+    ⚠️ Page initiée — programme complet non publié. Données basées sur les déclarations de Raphaël Glucksmann (août–septembre 2026). ·
+    Méthode crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · Recette ajustée = montant × (score/5) ·
+    Sources : <a href="https://www.franceinfo.fr/replay-radio/le-vrai-du-faux/augmenter-les-salaires-en-taxant-les-plus-gros-heritages-la-proposition-de-raphael-glucksmann-est-elle-realiste_8076284.html" target="_blank">Franceinfo — Glucksmann / successions</a> ·
+    <a href="https://www.elyseescope.com/questions/glucksmann-mega-heritages-taxe" target="_blank">ÉlyséeScope — méga-héritages</a>
+  </div>
+
+</div>
+<script>
+function toggle(col) {
+  var rows = document.querySelectorAll('.detail-' + col);
+  var btn = document.getElementById(col + '-btn');
+  var open = btn.textContent.indexOf('▼') !== -1;
+  rows.forEach(function(el) { el.style.display = open ? '' : 'none'; });
+  btn.textContent = open ? '▲ Masquer' : '▼ Détail';
+}
+</script>
+</body>
+</html>
