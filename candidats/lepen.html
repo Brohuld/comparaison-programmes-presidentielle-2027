@@ -89,6 +89,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 @media (max-width: 400px) {
   .kpi-row, .kpi-row2 { grid-template-columns: 1fr; }
 }
+@media (max-width: 430px) {
+  .kpi-row, .kpi-row2 { grid-template-columns: 1fr; }
+  .prog-table td.amount { white-space: normal; }
+  .prog-table td, .prog-table th { overflow-wrap: anywhere; }
+}
 </style>
 </head>
 <body>
@@ -103,7 +108,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="cand-party">Rassemblement National</div>
       <div class="badges">
         <span class="badge b-green">Candidate déclarée</span>
-        <span class="badge b-orange">Programme non publié — déclarations seulement</span>
+        <span class="badge b-orange">Programme non publié — trajectoire budgétaire du 6 octobre 2026</span>
         <span class="badge b-red">Déficit projeté −6,0% PIB 2030</span>
       </div>
       <div class="cred-header">
@@ -123,7 +128,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     ⚠️ <strong>Condamnée le 7 juillet 2026</strong> à 1 an ferme sous bracelet électronique dans l'affaire des assistants parlementaires. L'inéligibilité (15 mois) étant déjà purgée depuis mars 2025, Marine Le Pen est éligible à la présidentielle 2027 et a déclaré sa candidature malgré sa condamnation.
   </div>
   <div class="alert" style="background:#fcebeb; border-color:#e4a0a0; color:#6b1f1f;">
-    ⚠️ <strong>Contradiction : règle d'or annoncée vs programme réel.</strong> Marine Le Pen s'est engagée à inscrire dans la Constitution un plafond de déficit à 3% du PIB. Or les projections France Budget estiment le déficit de son programme à −6,0% du PIB en 2030 — soit le double du plafond constitutionnel qu'elle propose. La règle d'or serait incompatible avec ses propres mesures.
+    ⚠️ <strong>Écart entre l'objectif annoncé et l'estimation indépendante.</strong> Le 6 octobre 2026, Marine Le Pen a annoncé un déficit sous 3 % du PIB en 2030 et une règle d'or constitutionnelle. L'estimation France Budget (−6,0 % du PIB en 2030) a été calculée avant cette trajectoire. Sur les 140 Md€ d'économies annoncés, quatre postes sont chiffrés : administration de l'État 24 + Sécurité sociale 20 + « priorité nationale » 29 + UE 9 = <strong>82 Md€ par an à terme</strong>. Il manque 58 Md€ par an non ventilés.
+  </div>
+
+  <div class="alert">
+    ℹ️ <strong>Trajectoire budgétaire du quinquennat (6 octobre 2026, dépêche AFP).</strong>
+    140 Md€ d'économies nettes « en 2032 par rapport à 2026 » — hypothèse retenue : écart de dépense annuelle atteint en 2032, pas un cumul, car les postes détaillés sont des montants annuels ·
+    30 Md€ par an de baisses d'impôts · 15 Md€ par an de droits nouveaux ·
+    200 000 postes de fonctionnaires supprimés en cinq ans ·
+    pilier de retraite par capitalisation « individuel et collectif » ·
+    équilibre primaire en 18 mois, déficit sous 3 % du PIB en 2030, dette ramenée à 112 % du PIB (119 % aujourd'hui) ·
+    règle d'or inscrite dans la Constitution par référendum.
+    Le document du RN lui-même n'a pas été trouvé en ligne.
   </div>
 
   <!-- INDICATEURS -->
@@ -236,11 +252,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
             <td class="amount neg">~15–18 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
-            <td>Retraite à 60 ans (carrières longues) / 62 ans sinon — référendum
-              <div class="row-detail">60 ans pour ceux ayant commencé avant 20 ans avec 42 annuités. Sinon âge légal à 62 ans (contre 64 actuellement). Accompagné d'un référendum sur la réforme 2023.</div>
+            <td>Retraite à 62 ans ; 60 ans pour les carrières longues
+              <div class="row-detail">Âge légal ramené à 62 ans (64 aujourd'hui), durée de cotisation portée à 42 ans. Départ à 60 ans avec 40 annuités pour ceux qui ont commencé avant 20 ans (débat du Medef, 27 août 2026). Coût annoncé par le RN : 9 Md€ par an ; Institut Montaigne (centre-libéral, 2024) : environ 35 Md€ par an. Le 6 octobre, le RN annonce 15 à 20 Md€ par an d'économies sur les retraites pour le financer.</div>
               <span class="tag tag-off">Programme RN 2027</span>
             </td>
-            <td class="amount neg">~10–15 Md€</td>
+            <td class="amount neg">9–35 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Suppression de la CVAE
@@ -279,7 +295,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
           </tr>
           <tr class="tot">
             <td>Total dépenses estimées</td>
-            <td class="amount neg">~42–51 Md€/an</td>
+            <td class="amount neg">~46–81 Md€/an</td>
           </tr>
         </tbody>
       </table>
@@ -311,26 +327,44 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Réduction de la contribution française au budget UE
-              <div class="row-detail">Objectif : diviser par deux (de ~26 Md€ à ~13 Md€). Nécessite l'accord unanime des 27 États membres — quasi impossible sans sortie de l'UE.</div>
+              <div class="row-detail">Trajectoire du 6 octobre 2026 : −8,9 Md€ par an (net). Objectif antérieur : diviser par deux (de ~26 Md€ à ~13 Md€). Nécessite l'accord unanime des 27 États membres — quasi impossible sans sortie de l'UE.</div>
               <span class="tag tag-warn">⚠️ Nécessite accord unanime des 27</span>
             </td>
-            <td class="amount pos">~5–13 Md€</td>
+            <td class="amount pos">8,9 Md€</td>
             <td class="amount muted">~0</td>
             <td><span class="dots"><span class="dot" style="background:#e24b4a"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Économies sur les dépenses liées à l'immigration
-              <div class="row-detail">Non chiffré de façon indépendante. Effets directs et indirects difficiles à isoler.</div>
+              <div class="row-detail">RN (6 octobre 2026) : 15 Md€ la première année, 29 Md€ par an en année pleine, via la « priorité nationale ». Non chiffré de façon indépendante ; effets directs et indirects difficiles à isoler.</div>
               <span class="tag tag-est">Non chiffré</span>
             </td>
-            <td class="amount muted">n.d.</td>
+            <td class="amount pos">15–29 Md€</td>
             <td class="amount muted">—</td>
             <td><span class="dots"><span class="dot" style="background:#e24b4a"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
           </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Économies sur l'administration de l'État (révision des crédits, suppression d'agences)
+              <div class="row-detail">Trajectoire du 6 octobre 2026 (détail rapporté par Planet.fr). Postes précis non publiés.</div>
+              <span class="tag tag-off">Trajectoire RN oct. 2026</span>
+            </td>
+            <td class="amount pos">24 Md€</td>
+            <td class="amount muted">~10 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Économies sur la Sécurité sociale (retraites comprises, hypothèse)
+              <div class="row-detail">20 Md€ par an annoncés. Les sources ne disent pas si les 15 à 20 Md€ d'économies sur les retraites sont inclus : hypothèse retenue oui, pour ne pas compter deux fois.</div>
+              <span class="tag tag-off">Trajectoire RN oct. 2026</span>
+            </td>
+            <td class="amount pos">20 Md€</td>
+            <td class="amount muted">~8 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+          </tr>
           <tr class="tot">
             <td>Total recettes</td>
-            <td class="amount pos">~22–37 Md€</td>
-            <td class="amount" style="color:#a32d2d">~7–10 Md€</td>
+            <td class="amount pos">~85–106 Md€</td>
+            <td class="amount" style="color:#a32d2d">~25–28 Md€</td>
             <td><span class="dots"><span class="dot" style="background:#e24b4a"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
           </tr>
         </tbody>
@@ -340,10 +374,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 
   <div class="footnote">
-    ⚠️ Programme non publié — basé sur les déclarations de Marine Le Pen et le programme RN 2022/2027. À mettre à jour dès la publication d'un programme présidentiel officiel. ·
+    ⚠️ Programme non publié — basé sur les déclarations de Marine Le Pen, sa trajectoire budgétaire du 6 octobre 2026 et le programme RN 2022/2027. Mis à jour le 6 octobre 2026. ·
     Méthode crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · Recette ajustée = montant × (score/5) ·
     Sources : <a href="https://www.rassemblement-national.fr/programme/" target="_blank">Programme RN officiel</a> ·
     <a href="https://francebudget.fr/scenarios/rn-2027" target="_blank">France Budget — scénario RN</a> ·
+    <a href="https://www.lalibre.be/dernieres-depeches/2026/10/06/140-milliards-deconomies-ce-quil-faut-retenir-de-lintervention-de-marine-le-pen-ASYLNEWWL5DUJBSY6JRCGB2NQU/" target="_blank">AFP — trajectoire du 6 octobre 2026</a> ·
     <a href="https://www.elyseescope.com/le-radar/programme-economique-marine-le-pen-rn-2027" target="_blank">ÉlyséeScope — programme Le Pen</a>
   </div>
 

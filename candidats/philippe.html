@@ -86,6 +86,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 @media (max-width: 400px) {
   .kpi-row, .kpi-row2 { grid-template-columns: 1fr; }
 }
+@media (max-width: 430px) {
+  .kpi-row, .kpi-row2 { grid-template-columns: 1fr; }
+  .prog-table td.amount { white-space: normal; }
+  .prog-table td, .prog-table th { overflow-wrap: anywhere; }
+}
 </style>
 </head>
 <body>
@@ -94,7 +99,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <a class="back" href="../comparaison_2027.html">← Tous les candidats</a>
 
   <div class="cand-header">
-    <div class="avatar"><img src="Philippe.png" alt="Édouard Philippe" onerror="this.outerHTML='EP'"></div>
+    <div class="avatar"><img src="Philippe.jpg" alt="Édouard Philippe" onerror="this.outerHTML='EP'"></div>
     <div>
       <div class="cand-name">Édouard Philippe</div>
       <div class="cand-party">Horizons</div>
@@ -143,6 +148,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <label>Impôts Entreprises</label>
       <div class="val pos">~−5 à −10%</div>
       <div class="sub">Baisse nette via CVAE + exo HS</div>
+    </div>
+    <div class="kpi">
+      <label>Âge de départ à la retraite</label>
+      <div class="val" style="color:#ef9f27">65 ans · 45 annuités</div>
+      <div class="sub">Annoncé le 29 septembre 2026 — calendrier non précisé</div>
     </div>
   </div>
   <div class="kpi-row2">
@@ -254,9 +264,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
             </td>
             <td class="amount neg">~3–5 Md€</td>
           </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Plan d'épargne retraite généralisé (500 € versés par l'État)
+              <div class="row-detail">Dès le premier contrat de travail. Coût annoncé : 400 M€ par an, payés par les dividendes de l'État actionnaire (29 septembre 2026).</div>
+              <span class="tag tag-off">Programme Horizons</span>
+            </td>
+            <td class="amount neg">0,4 Md€</td>
+          </tr>
           <tr class="tot">
             <td>Total dépenses estimées</td>
-            <td class="amount neg">~36–50 Md€/an</td>
+            <td class="amount neg">~36–51 Md€/an</td>
           </tr>
         </tbody>
       </table>
@@ -287,13 +304,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
             <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
-            <td>Incitations à travailler après 64 ans (bonus retraite)
-              <div class="row-detail">Maintien de l'âge légal à 64 ans mais bonus retraite pour les actifs qui prolongent leur activité. Économies nettes modestes sur le régime.</div>
+            <td>Réforme des retraites : 65 ans et 45 annuités
+              <div class="row-detail">Vidéo du 29 septembre 2026. Âge légal porté progressivement à 65 ans, 45 annuités pour le taux plein, fonds de capitalisation collective alimenté par les excédents de l'Agirc-Arrco. Économies annoncées : 30 Md€ par an, dont 10 Md€ par an pour le système de retraite et 20 Md€ par an pour les finances publiques, dont l'origine n'est pas précisée. Ajusté : 10 Md€ × 3/5 + 20 Md€ × 1/5 = 10 Md€.</div>
               <span class="tag tag-off">Déclarations publiques</span>
             </td>
-            <td class="amount pos">~2–4 Md€</td>
-            <td class="amount muted">~1–2 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">30 Md€</td>
+            <td class="amount muted">~10 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Taxation des superprofits (énergie, banques, grande distribution)
@@ -315,8 +332,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
           </tr>
           <tr class="tot">
             <td>Total recettes</td>
-            <td class="amount pos">~30–55 Md€</td>
-            <td class="amount" style="color:#a32d2d">~19–34 Md€</td>
+            <td class="amount pos">~56–81 Md€</td>
+            <td class="amount" style="color:#a32d2d">~28–42 Md€</td>
             <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
           </tr>
         </tbody>
@@ -326,10 +343,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 
   <div class="footnote">
-    ⚠️ Programme non publié à ce jour — page basée sur les déclarations publiques d'Édouard Philippe (interviews, discours). À mettre à jour dès la publication du programme complet. ·
+    ⚠️ Programme non publié à ce jour — page basée sur les déclarations publiques d'Édouard Philippe (interviews, discours) et son volet retraites du 29 septembre 2026. Mis à jour le 6 octobre 2026. ·
     Méthode crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · Recette ajustée = montant × (score/5) ·
     Sources : <a href="https://www.publicsenat.fr/actualites/economie/entreprises-un-deal-a-250-milliards-deuros-sur-un-quinquennat-que-represente-la-proposition-dedouard-philippe" target="_blank">Public Sénat — Deal 250 Md€</a> ·
-    <a href="https://francebudget.fr/scenarios/renaissance-2027" target="_blank">France Budget — proxy Renaissance</a>
+    <a href="https://francebudget.fr/scenarios/renaissance-2027" target="_blank">France Budget — proxy Renaissance</a> ·
+    <a href="https://www.journaldunet.com/business/action-publique/1555605-edouard-philippe-devoile-son-projet-de-reforme-des-retraites-pour-la-presidentielle-2027-prevoyant-un-depart-a-65-ans-et-45-annuites/" target="_blank">Journal du Net — retraites</a>
   </div>
 
 </div>

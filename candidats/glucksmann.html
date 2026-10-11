@@ -75,6 +75,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .footnote { margin-top: 12px; font-size: 11px; color: var(--text-muted); padding: 10px 14px; background: var(--surface); border-radius: 8px; border: 0.5px solid var(--border); line-height: 1.6; }
 
 @media (max-width: 680px) { .kpi-row { grid-template-columns: 1fr 1fr; } .cols { grid-template-columns: 1fr; } }
+@media (max-width: 430px) {
+  .kpi-row, .kpi-row2 { grid-template-columns: 1fr; }
+  .prog-table td.amount { white-space: normal; }
+  .prog-table td, .prog-table th { overflow-wrap: anywhere; }
+}
 </style>
 </head>
 <body>
@@ -88,7 +93,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="cand-name">Raphaël Glucksmann</div>
       <div class="cand-party">Place Publique / PS</div>
       <div class="badges">
-        <span class="badge b-green">Candidat déclaré</span>
+        <span class="badge b-green">Candidat déclaré — 23 août 2026</span>
+        <span class="badge b-blue">Primaire : 9-10 et 16-17 octobre 2026</span>
         <span class="badge b-orange">Programme partiel — déclarations seulement</span>
       </div>
       <div class="cred-header">
@@ -105,15 +111,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 
   <div class="alert">
-    ℹ️ Page initialisée avec les premières déclarations de programme. Le programme complet de Raphaël Glucksmann n'a pas encore été publié — cette page sera mise à jour au fur et à mesure.
+    ℹ️ Candidature officialisée le 23 août 2026. Raphaël Glucksmann affronte Olivier Faure, Jérôme Guedj, Emmanuel Maurel et Ségolène Royal à la primaire sociale-démocrate (Parti socialiste et Place publique) : premier tour les 9 et 10 octobre, second tour les 16 et 17 octobre 2026. Pas de programme complet : grands axes seulement (indépendance énergétique, autonomie technologique et industrielle). Mesure rapportée par l'AFP le 15 septembre : baisse des cotisations salariales financée par une taxation accrue des grands héritages.
   </div>
 
   <!-- INDICATEURS -->
   <div class="kpi-row">
     <div class="kpi">
       <label>Déficit projeté 2030</label>
-      <div class="val muted">—</div>
-      <div class="sub">En attente du programme</div>
+      <div class="val" style="color:#854f0b">−5,6% PIB</div>
+      <div class="sub">France Budget — programme PS « Vivre libre » (proxy)</div>
     </div>
     <div class="kpi">
       <label>Dette publique 2030</label>
@@ -201,10 +207,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 
   <div class="footnote">
-    ⚠️ Page initiée — programme complet non publié. Données basées sur les déclarations de Raphaël Glucksmann (août–septembre 2026). ·
+    ⚠️ Page initiée — programme complet non publié. Données basées sur les déclarations de Raphaël Glucksmann (août–septembre 2026). Mis à jour le 6 octobre 2026. ·
     Méthode crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · Recette ajustée = montant × (score/5) ·
     Sources : <a href="https://www.franceinfo.fr/replay-radio/le-vrai-du-faux/augmenter-les-salaires-en-taxant-les-plus-gros-heritages-la-proposition-de-raphael-glucksmann-est-elle-realiste_8076284.html" target="_blank">Franceinfo — Glucksmann / successions</a> ·
-    <a href="https://www.elyseescope.com/questions/glucksmann-mega-heritages-taxe" target="_blank">ÉlyséeScope — méga-héritages</a>
+    <a href="https://www.elyseescope.com/questions/glucksmann-mega-heritages-taxe" target="_blank">ÉlyséeScope — méga-héritages</a> ·
+    <a href="https://lcp.fr/actualites/presidentielle-dates-candidats-prix-tout-ce-qu-il-faut-savoir-sur-la-primaire-sociale" target="_blank">LCP — primaire</a> · <a href="https://www.sudradio.fr/societe/salaires-carburants-mobilisations-le-pouvoir-dachat-simpose-dans-la-campagne" target="_blank">AFP — pouvoir d'achat, 15 septembre 2026</a>
   </div>
 
 </div>

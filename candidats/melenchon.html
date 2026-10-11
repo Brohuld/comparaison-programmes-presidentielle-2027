@@ -85,6 +85,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 @media (max-width: 400px) {
   .kpi-row, .kpi-row2 { grid-template-columns: 1fr; }
 }
+@media (max-width: 430px) {
+  .kpi-row, .kpi-row2 { grid-template-columns: 1fr; }
+  .prog-table td.amount { white-space: normal; }
+  .prog-table td, .prog-table th { overflow-wrap: anywhere; }
+}
 </style>
 </head>
 <body>
@@ -100,7 +105,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="badges">
         <span class="badge b-green">Candidat déclaré — 3 mai 2026</span>
         <span class="badge b-blue">Programme chiffré (2022)</span>
-        <span class="badge b-red">Déficit projeté −7,4% PIB 2030</span>
+        <span class="badge b-red">Déficit projeté −6,3% PIB 2030</span>
       </div>
       <div class="cred-header">
         <span class="cred-header-label">Crédibilité des recettes</span>
@@ -115,6 +120,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 
+  <div class="alert">
+    ℹ️ <strong>Nouvelle édition du programme les 6 et 7 novembre 2026</strong> (1 069 mesures, six chapitres, meeting au Bourget le 7 novembre). Cette page repose encore sur l'édition 2025 et le chiffrage de 2022.
+    Annonce de campagne du 23 septembre 2026 : prix des carburants plafonné à 1,70 € le litre et marges des raffineurs encadrées par la loi, plutôt qu'une baisse de TVA.
+  </div>
+
   <!-- INDICATEURS -->
   <div class="kpi-row">
     <div class="kpi">
@@ -124,7 +134,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
     <div class="kpi">
       <label>Déficit projeté 2030</label>
-      <div class="val neg">−7,4% PIB</div>
+      <div class="val neg">−6,3% PIB</div>
       <div class="sub">France Budget — scénario LFI</div>
     </div>
     <div class="kpi">
@@ -218,51 +228,51 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Coût / an</th></tr></thead>
         <tbody>
           <tr class="detail-dep" style="display:none">
-            <td>SMIC porté à 1 600 € net
-              <div class="row-detail">≈ 2 050 € brut. Partiellement compensé par exonérations de charges.</div>
-              <span class="tag tag-est">France Budget</span>
+            <td>SMIC porté à 2 176 € brut (≈ 1 700 € net)
+              <div class="row-detail">+15 % au 1er janvier 2027 (proposition de loi n° 3176, niche LFI du 29 octobre 2026). Coût porté par la Sécurité sociale, car les allègements de cotisations augmentent avec le SMIC. Chiffrage sur l'ancienne grille d'allègements ; la grille 2026 le rend probablement plus élevé.</div>
+              <span class="tag tag-est">IRES · Institut Montaigne</span>
             </td>
             <td class="amount neg">~15–20 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Retraite à 60 ans avec 40 annuités
               <div class="row-detail">Abrogation de la réforme Macron 2023.</div>
-              <span class="tag tag-est">France Budget</span>
+              <span class="tag tag-est">Estimation non sourcée</span>
             </td>
             <td class="amount neg">~15–25 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
-            <td>Semaine de 32 heures sans perte de salaire
-              <div class="row-detail">Applicable aux entreprises de plus de 50 salariés en priorité.</div>
-              <span class="tag tag-est">France Budget</span>
+            <td>32 heures dans les métiers pénibles ou de nuit
+              <div class="row-detail">Retour aux 35 heures effectives ; généralisation des 32 heures renvoyée à la négociation collective (édition 2025 du programme, citée par votons-2027.fr et france-vote.fr, consultés le 11 octobre 2026). Champ « métiers pénibles » non défini : coût non chiffrable en l'état.</div>
+              <span class="tag tag-est">Non chiffré</span>
             </td>
-            <td class="amount neg">~20–30 Md€</td>
+            <td class="amount neg">n.d.</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>+1 million d'agents publics
               <div class="row-detail">Éducation, hôpital, sécurité, services de proximité.</div>
-              <span class="tag tag-est">France Budget</span>
+              <span class="tag tag-est">Estimation non sourcée</span>
             </td>
             <td class="amount neg">~40–50 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Planification écologique
               <div class="row-detail">Rénovation thermique, transports, énergie.</div>
-              <span class="tag tag-est">France Budget</span>
+              <span class="tag tag-est">Estimation non sourcée</span>
             </td>
             <td class="amount neg">~20–30 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Gratuité de la complémentaire santé
               <div class="row-detail">Intégration dans la Sécurité sociale.</div>
-              <span class="tag tag-est">France Budget</span>
+              <span class="tag tag-est">Estimation non sourcée</span>
             </td>
             <td class="amount neg">~35 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Gratuité des transports en commun
               <div class="row-detail">Mesure nationale compensée aux collectivités.</div>
-              <span class="tag tag-est">France Budget</span>
+              <span class="tag tag-est">Estimation non sourcée</span>
             </td>
             <td class="amount neg">~10–15 Md€</td>
           </tr>
@@ -275,7 +285,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
           </tr>
           <tr class="tot">
             <td>Total estimé</td>
-            <td class="amount neg">~160–212 Md€/an</td>
+            <td class="amount neg">~140–182 Md€/an</td>
           </tr>
         </tbody>
       </table>
@@ -399,9 +409,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 
   <div class="footnote">
-    Méthode : indice pondéré = Σ(montant × score) / Σ(montant) · Recette ajustée = montant × (score/5) ·
+    Mis à jour le 11 octobre 2026 · Méthode : indice pondéré = Σ(montant × score) / Σ(montant) · Recette ajustée = montant × (score/5) ·
     Sources : <a href="https://programme.lafranceinsoumise.fr/plans/justice-fiscale/" target="_blank">Plan Justice Fiscale LFI 2022</a> ·
     <a href="https://francebudget.fr/scenarios/lfi-2027" target="_blank">France Budget — scénario LFI</a> ·
+    <a href="https://lcp.fr/actualites/presidentielle-le-programme-remanie-de-la-nouvelle-france-de-jean-luc-melenchon-sera" target="_blank">LCP — programme de novembre</a> ·
+    <a href="https://www.publicsenat.fr/actualites/politique/jean-luc-melenchon-denonce-un-gouvernement-depasse-face-a-la-flambee-des-prix-des-carburants" target="_blank">Public Sénat — carburants</a> ·
     <a href="https://www.ccomptes.fr/sites/default/files/2025-12/20251216-Lutte-contre-la-fraude-fiscale.pdf" target="_blank">Cour des comptes déc. 2025</a>
   </div>
 
