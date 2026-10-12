@@ -93,7 +93,7 @@ body {
 .cand-name { font-size: 13px; font-weight: 500; line-height: 1.3; }
 .cand-party { font-size: 11px; color: var(--text-muted); }
 
-.badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; }
+.badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
 .b-green  { background: #eaf3de; color: #27500a; }
 .b-orange { background: #faeeda; color: #633806; }
 
@@ -117,7 +117,7 @@ body {
 
 <div class="page-header">
   <h1>Présidentielle 2027 — Programmes économiques</h1>
-  <p>Dépenses &amp; recettes · Sources officielles · Indice de crédibilité des recettes</p>
+  <p>Dépenses &amp; recettes · Sources officielles · Crédibilité · Trou de financement</p>
 </div>
 
 <div class="grid">
@@ -129,14 +129,10 @@ body {
     <div class="row-party"><span class="cand-party">La France Insoumise</span></div>
     <div class="row-badge"><span class="badge b-green">Candidat déclaré</span></div>
     <div class="cred-section">
-      <div class="cred-label">Crédibilité des recettes</div>
-      <span class="dots">
-        <span class="dot" style="background:#d85a30"></span>
-        <span class="dot" style="background:#d85a30"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-      </span>
+      <div class="cred-label">Crédibilité</div>
+      <span class="dots"><span class="dot" style="background:#e24b4a"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span>
+      <div class="cred-label" style="margin-top:8px;margin-bottom:0">Trou de financement</div>
+      <div class="cred-label" style="margin-bottom:0;color:var(--text);font-weight:500">≈ 126 Md€/an</div>
     </div>
     <div class="deficit-section">
       <div class="deficit-label">Déficit projeté 2030</div>
@@ -152,14 +148,10 @@ body {
     <div class="row-party"><span class="cand-party">Rassemblement National</span></div>
     <div class="row-badge"><span class="badge b-green">Candidate déclarée</span></div>
     <div class="cred-section">
-      <div class="cred-label">Crédibilité des recettes</div>
-      <span class="dots">
-        <span class="dot" style="background:#e24b4a"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-      </span>
+      <div class="cred-label">Crédibilité</div>
+      <span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:linear-gradient(90deg,#ef9f27 50%,#d3d1c7 50%)"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span>
+      <div class="cred-label" style="margin-top:8px;margin-bottom:0">Trou de financement</div>
+      <div class="cred-label" style="margin-bottom:0;color:var(--text);font-weight:500">≈ 39 Md€/an</div>
     </div>
     <div class="deficit-section">
       <div class="deficit-label">Déficit projeté 2030</div>
@@ -173,16 +165,12 @@ body {
     <div class="avatar-wrap"><img src="candidats/Glucksmann.webp" alt="Raphaël Glucksmann"></div>
     <div class="row-name"><span class="cand-name">Raphaël Glucksmann</span></div>
     <div class="row-party"><span class="cand-party">Place Publique / PS</span></div>
-    <div class="row-badge"><span class="badge b-green">Candidat déclaré</span></div>
+    <div class="row-badge"><span class="badge b-green">Candidat désigné</span></div>
     <div class="cred-section">
-      <div class="cred-label">Crédibilité des recettes</div>
-      <span class="dots">
-        <span class="dot" style="background:#d85a30"></span>
-        <span class="dot" style="background:#d85a30"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-      </span>
+      <div class="cred-label">Crédibilité</div>
+      <span class="dots"><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span>
+      <div class="cred-label" style="margin-top:8px;margin-bottom:0">Trou de financement</div>
+      <div class="cred-label" style="margin-bottom:0;color:var(--text);font-weight:500">données insuffisantes</div>
     </div>
     <div class="deficit-section">
       <div class="deficit-label">Déficit projeté 2030</div>
@@ -198,14 +186,10 @@ body {
     <div class="row-party"><span class="cand-party">Horizons</span></div>
     <div class="row-badge"><span class="badge b-green">Candidat déclaré</span></div>
     <div class="cred-section">
-      <div class="cred-label">Crédibilité des recettes</div>
-      <span class="dots">
-        <span class="dot" style="background:#ef9f27"></span>
-        <span class="dot" style="background:#ef9f27"></span>
-        <span class="dot" style="background:#ef9f27"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-      </span>
+      <div class="cred-label">Crédibilité</div>
+      <span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span>
+      <div class="cred-label" style="margin-top:8px;margin-bottom:0">Trou de financement</div>
+      <div class="cred-label" style="margin-bottom:0;color:var(--text);font-weight:500">≈ 17 Md€/an</div>
     </div>
     <div class="deficit-section">
       <div class="deficit-label">Déficit projeté 2030</div>
@@ -221,14 +205,10 @@ body {
     <div class="row-party"><span class="cand-party">Les Républicains</span></div>
     <div class="row-badge"><span class="badge b-green">Candidat déclaré</span></div>
     <div class="cred-section">
-      <div class="cred-label">Crédibilité des économies</div>
-      <span class="dots">
-        <span class="dot" style="background:#ef9f27"></span>
-        <span class="dot" style="background:#ef9f27"></span>
-        <span class="dot" style="background:#ef9f27"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-        <span class="dot" style="background:#d3d1c7"></span>
-      </span>
+      <div class="cred-label">Crédibilité</div>
+      <span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span>
+      <div class="cred-label" style="margin-top:8px;margin-bottom:0">Trou de financement</div>
+      <div class="cred-label" style="margin-bottom:0;color:var(--text);font-weight:500">≈ 22 Md€/an</div>
     </div>
     <div class="deficit-section">
       <div class="deficit-label">Déficit projeté 2030</div>
@@ -240,11 +220,11 @@ body {
 </div>
 
 <div class="footer">
-  Crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · ○○○○○ = données insuffisantes ·
+  <strong>Crédibilité</strong> (note sur 5, demi-points) = combinaison du trou de financement et de la crédibilité des recettes : trou pondéré = trou de financement × (1 − part crédible des recettes), en Md€ par an ; 5 points jusqu'à 5 Md€ (marge d'incertitude ordinaire d'un chiffrage), puis 1 point de moins chaque fois que ce montant double (10 Md€ = 4 ; 20 = 3 ; 40 = 2 ; 80 = 1), minimum ½. <strong>Part crédible des recettes</strong> = pour chaque recette ou économie chiffrée par le candidat, montant jugé crédible ÷ montant annoncé ; pour une mesure non chiffrée par le candidat, note de la grille du comparateur (5 = précise et chiffrée de façon concordante ; 4 = un chiffrage indépendant solide ; 3 = mécanisme connu, paramètres manquants ; 2 = mécanisme flou ou rendement contesté ; 1 = aucun mécanisme ; 0 = contraire à la Constitution ou aux traités) ; moyenne pondérée par les montants. <strong>Trou de financement</strong> = dépenses estimées par le comparateur − recettes et économies jugées crédibles (milieu des fourchettes, Md€ par an) ; non calculé en dessous de 6 mesures chiffrées ; mesures non chiffrables exclues.<br>
   Déficit projeté : <a href="https://francebudget.fr" target="_blank">France Budget</a> (outil citoyen indépendant) · Barre calibrée sur −10% PIB max ·
   Sources : déclarations officielles des candidats · Plan Justice Fiscale LFI 2022<br>
-  * Glucksmann : scénario France Budget du programme PS « Vivre libre » (proxy) · Le Pen : chiffre France Budget antérieur à la trajectoire présentée le 6 octobre 2026, qui annonce un déficit sous 3 % du PIB en 2030 ·
-  Mis à jour le 11 octobre 2026 · Retailleau : objectif global retenu à 80 Md€ sur le quinquennat (hypothèse)
+  * Glucksmann : scénario France Budget du programme PS « Vivre libre » (proxy) · Le Pen : chiffre France Budget antérieur au contre-budget du 6 octobre 2026, qui affiche 2,3 % du PIB en 2031 ·
+  Mis à jour le 12 octobre 2026 · Retailleau : objectif global retenu à 80 Md€ sur le quinquennat (hypothèse)
 </div>
 
 </body>

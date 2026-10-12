@@ -91,6 +91,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   .prog-table td.amount { white-space: normal; }
   .prog-table td, .prog-table th { overflow-wrap: anywhere; }
 }
+@media (max-width: 1024px) {
+  .cols { grid-template-columns: 1fr; }
+  .prog-table td.amount { white-space: normal; }
+}
+@media (max-width: 1024px) {
+  .prog-table td.amount, .prog-table th.r { overflow-wrap: normal; word-break: normal; min-width: 64px; }
+}
+@media (max-width: 360px) {
+  .prog-table td.amount, .prog-table th.r { min-width: 48px; font-size: 11px; }
+  .prog-table td, .prog-table th { padding-left: 4px; padding-right: 4px; }
+}
 </style>
 </head>
 <body>
@@ -110,14 +121,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <span class="badge b-green">Règle d'or constitutionnelle</span>
       </div>
       <div class="cred-header">
-        <span class="cred-header-label">Crédibilité des recettes</span>
-        <span class="dots-lg">
-          <span class="dot-lg" style="background:#ef9f27"></span>
-          <span class="dot-lg" style="background:#ef9f27"></span>
-          <span class="dot-lg" style="background:#ef9f27"></span>
-          <span class="dot-lg" style="background:#d3d1c7"></span>
-          <span class="dot-lg" style="background:#d3d1c7"></span>
-        </span>
+        <span class="cred-header-label">Crédibilité : 4/5 · Trou de financement : ≈ 17 Md€/an · Recettes crédibles : 48 %</span>
+        <span class="dots-lg"><span class="dot-lg" style="background:#639922"></span><span class="dot-lg" style="background:#639922"></span><span class="dot-lg" style="background:#639922"></span><span class="dot-lg" style="background:#639922"></span><span class="dot-lg" style="background:#d3d1c7"></span></span>
       </div>
     </div>
   </div>
@@ -220,6 +225,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <span><span class="lsq" style="background:#e24b4a"></span>Très peu crédible ●○○○○</span>
   </div>
 
+  <div class="legend" style="margin-top:-6px"><span><strong>Candidat</strong> : chiffre publié par le candidat ou son parti (« — » = aucun)</span><span><strong>Comparateur</strong> : notre estimation à partir de sources publiques, méthode et sources dans le détail de chaque ligne</span><span>Montants en Md€ par an</span></div>
+
   <!-- DEUX COLONNES -->
   <div class="cols">
 
@@ -227,53 +234,75 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div>
       <div class="col-head head-dep" onclick="toggle('dep')">Dépenses supplémentaires <span class="toggle-btn" id="dep-btn">▼ Détail</span></div>
       <table class="prog-table">
-        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Coût / an</th></tr></thead>
+        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Candidat</th><th class="r">Comparateur</th></tr></thead>
         <tbody>
           <tr class="detail-dep" style="display:none">
             <td>Suppression de la CVAE
               <div class="row-detail">Cotisation sur la valeur ajoutée des entreprises. Mesure déjà partiellement engagée sous Macron (−4 Md€ en 2023).</div>
               <span class="tag tag-off">Déclarations publiques</span>
             </td>
-            <td class="amount neg">~10 Md€</td>
+            <td class="amount muted">—</td><td class="amount neg">~10 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Bouclier de cotisations patronales (1–2,5 SMIC)
               <div class="row-detail">Exonération partielle ou totale pour les salaires entre 1 et 2,5 SMIC. Vise à réduire le coût du travail sur la classe moyenne.</div>
               <span class="tag tag-est">Estimation</span>
             </td>
-            <td class="amount neg">~15–20 Md€</td>
+            <td class="amount muted">—</td><td class="amount neg">~15–20 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Exonération de cotisations sur les heures supplémentaires
-              <div class="row-detail">Suppression totale des cotisations sociales sur les HS. Précédent : loi TEPA 2007 (~4 Md€/an), renforcé par Macron en 2019.</div>
+              <div class="row-detail">Suppression totale des cotisations sociales sur les HS. Le 8 octobre 2026 (France 2), il cible deux heures supplémentaires par semaine : environ 1 000 € de plus par an pour un salarié au Smic, selon lui. Précédent : loi TEPA 2007 (~4 Md€/an), renforcé par Macron en 2019. 8 octobre 2026 : deux heures par semaine exonérées. Comparateur : non chiffrable tel quel — les heures supplémentaires sont déjà exonérées de cotisations salariales et d'impôt ; 0 à 2 (CSG) ou 3 à 5 (cotisations patronales). <a href="https://www.senat.fr/rap/r24-901/r24-90125.html" target="_blank">Sénat</a></div>
               <span class="tag tag-est">Estimation</span>
             </td>
-            <td class="amount neg">~3–5 Md€</td>
+            <td class="amount muted">—</td><td class="amount neg">0–5 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Réforme de l'impôt sur le revenu — classes moyennes
               <div class="row-detail">Fusion de tranches et baisse ciblée pour les revenus entre 30 k€ et 80 k€/an. Mesure concrète et chiffrable.</div>
               <span class="tag tag-off">Déclarations publiques</span>
             </td>
-            <td class="amount neg">~5–10 Md€</td>
+            <td class="amount muted">—</td><td class="amount neg">~5–10 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Revalorisation des enseignants (+20% sur quinquennat)
               <div class="row-detail">+20% de rémunération moyenne d'ici 2032 ; débutants portés à 2 500€ net dès la rentrée 2027. Financé en partie par la baisse démographique scolaire (~1M d'élèves en moins). Coût estimé par similarité avec la proposition Attal : 2,5–3 Md€/an à terme.</div>
               <span class="tag tag-off">Programme Horizons</span>
             </td>
-            <td class="amount neg">~3–5 Md€</td>
+            <td class="amount muted">—</td><td class="amount neg">~3–5 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Plan d'épargne retraite généralisé (500 € versés par l'État)
               <div class="row-detail">Dès le premier contrat de travail. Coût annoncé : 400 M€ par an, payés par les dividendes de l'État actionnaire (29 septembre 2026).</div>
               <span class="tag tag-off">Programme Horizons</span>
             </td>
-            <td class="amount neg">0,4 Md€</td>
+            <td class="amount neg">0,4</td><td class="amount neg">0,4 Md€</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Allocation familiale unique de 350 € par mois dès le premier enfant
+              <div class="row-detail">Annoncée le 8 octobre 2026 (« L'Heure de vérité », France 2). Remplace le système actuel ; dégressive selon l'impôt sur le revenu (Euronews/AP). Coût et financement non publiés. <br><strong>Comparateur :</strong> 10 à 20, hypothèse retenue : 350 € par mois et par famille, versés dès le premier enfant (« une allocation familiale unique qui permet de verser 350 € dès le premier enfant », France 2, 8 octobre 2026). 8 M de familles × 350 € × 12 = 33,6 brut − 14 Md€ d'allocations familiales actuelles = +19,6 ; borne basse si la dégressivité selon l'impôt retire 30 % (hypothèse). Si les 350 € étaient versés par enfant : ≈ +47.</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount muted">—</td><td class="amount neg">10–20 Md€</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Réduction d'impôt d'environ 3 000 € pour les familles actives
+              <div class="row-detail">8 octobre 2026 : foyers payant moins de 3 000 € d'impôt sur le revenu exonérés pendant trois ans, réduction de 3 000 € au-delà (LCP). Prêt à taux zéro pour acheter un logement plus grand à l'arrivée d'un enfant : proposé selon le Journal du Net et Euronews/AP ; selon LCP, il est « revenu sur » cette proposition, sans dire s'il l'abandonne ou la modifie. Coût non publié. <br><strong>Comparateur :</strong> 1,74 M d'enfants concernés (3 ans × 580 000 naissances) × 47 à 60 % de foyers imposables × 1 500 à 2 500 € ; 5,2 si crédit d'impôt pour les non-imposables.</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount muted">—</td><td class="amount neg">1,2–2,6 Md€</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Fonds unique d'adaptation au changement climatique
+              <div class="row-detail">Proposé mi-septembre 2026, rappelé le 8 octobre 2026.</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount neg">2</td><td class="amount neg">2 Md€</td>
           </tr>
           <tr class="tot">
             <td>Total dépenses estimées</td>
-            <td class="amount neg">~36–51 Md€/an</td>
+            <td class="amount neg">~2 Md€/an</td>
+            <td class="amount neg">~46–75 Md€/an</td>
           </tr>
         </tbody>
       </table>
@@ -283,7 +312,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div>
       <div class="col-head head-rec" onclick="toggle('rec')">Recettes supplémentaires <span class="toggle-btn" id="rec-btn">▼ Détail</span></div>
       <table class="prog-table">
-        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Annoncé</th><th class="r">Ajusté</th><th>Créd.</th></tr></thead>
+        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Candidat</th><th class="r">Comparateur</th><th>Créd.</th></tr></thead>
         <tbody>
           <tr class="detail-rec" style="display:none">
             <td>Lutte contre la fraude fiscale et sociale
@@ -291,17 +320,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Déclarations publiques</span>
             </td>
             <td class="amount pos">+15–20 Md€</td>
-            <td class="amount muted">~9–12 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~9–12 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">60 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Réduction des dépenses publiques (bureaucratie)
-              <div class="row-detail">Réduction des agences, opérateurs et administrations centrales. Fonctionnaires de terrain préservés. Montant non précisé.</div>
+              <div class="row-detail">Réduction des agences, opérateurs et administrations centrales. Il disait vouloir préserver les fonctionnaires de terrain ; le 8 octobre 2026, il annonce le non-remplacement d'un départ sur trois dans toute la fonction publique, sans préciser si le terrain est épargné. Montant non précisé. <strong>Crédibilité (grille) :</strong> 3/5 — mécanisme connu (agences, opérateurs), mais ni liste ni calendrier.</div>
               <span class="tag tag-est">Estimation</span>
             </td>
-            <td class="amount pos">~5–10 Md€</td>
-            <td class="amount muted">~4–8 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount muted">—</td>
+            <td class="amount pos">~4–8 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">grille : 3/5</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Réforme des retraites : 65 ans et 45 annuités
@@ -309,32 +338,50 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Déclarations publiques</span>
             </td>
             <td class="amount pos">30 Md€</td>
-            <td class="amount muted">~10 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~10 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">33 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Taxation des superprofits (énergie, banques, grande distribution)
-              <div class="row-detail">Prélèvement exceptionnel sur les secteurs très bénéficiaires pour financer les baisses d'impôts. Périmètre non précisé.</div>
+              <div class="row-detail">Prélèvement exceptionnel sur les secteurs très bénéficiaires pour financer les baisses d'impôts. Périmètre non précisé. <strong>Crédibilité (grille) :</strong> 2/5 — assiette et taux non précisés ; rendement contesté selon les précédents.</div>
               <span class="tag tag-est">Estimation</span>
             </td>
-            <td class="amount pos">~3–5 Md€</td>
-            <td class="amount muted">~2–3 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount muted">—</td>
+            <td class="amount pos">~2–3 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">grille : 2/5</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Croissance économique — recettes supplémentaires
-              <div class="row-detail">Hypothèse centrale du programme : la baisse des charges relance l'emploi et la production, générant des recettes fiscales indirectes. Non chiffré.</div>
+              <div class="row-detail">Hypothèse centrale du programme : la baisse des charges relance l'emploi et la production, générant des recettes fiscales indirectes. Non chiffré. <strong>Crédibilité (grille) :</strong> 2/5 — recette conditionnelle, non pilotable.</div>
               <span class="tag tag-est">Non chiffré</span>
             </td>
-            <td class="amount pos">+5–15 Md€</td>
-            <td class="amount muted">~3–9 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount muted">—</td>
+            <td class="amount pos">~3–9 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">grille : 2/5</span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Fonction publique : un départ à la retraite sur trois non remplacé
+              <div class="row-detail">Annoncé le 8 octobre 2026 (France 2) : sur les 750 000 départs attendus pendant le quinquennat, deux sur trois remplacés, soit environ 250 000 postes en moins sur cinq ans. Économie non publiée. <br><strong>Comparateur :</strong>en 2032 : 250 000 postes × 38 à 47 k€ (coût d'une recrue débutante, Cour des comptes 2010, revalorisé) = 9,5 à 11,7 brut ; 2 à 6 net si 50 à 80 % sont reversés aux agents, comme sous la RGPP. <a href="https://www.vie-publique.fr/files/rapport/pdf/194000072.pdf" target="_blank">Cour des comptes</a> <strong>Crédibilité (grille) :</strong> 3/5 — précédent mesuré (RGPP), mais part reversée aux agents inconnue.</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount muted">—</td>
+            <td class="amount pos">2–6 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">grille : 3/5</span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Assurance chômage : durée maximale ramenée de 18 à 12 mois
+              <div class="row-detail">Annoncé le 8 octobre 2026 (France 2), pour les moins de 50 ans selon Euronews/AP. Il veut faire porter la moitié de l'effort d'économies sur les dépenses sociales. Économie non publiée. <br><strong>Comparateur :</strong> Unédic, 18 → 12 mois pour les moins de 53 ans ≈ 6 (scénarios 2024) ; une partie se reporte sur le RSA. <a href="https://www.publicsenat.fr/actualites/emploi/assurance-chomage-la-reforme-pourrait-affecter-jusqua-un-tiers-des-allocataires-selon-lunedic" target="_blank">Public Sénat</a> <strong>Crédibilité (grille) :</strong> 4/5 — mesure précise, chiffrage Unédic.</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount muted">—</td>
+            <td class="amount pos">4–6 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">grille : 4/5</span></td>
           </tr>
           <tr class="tot">
             <td>Total recettes</td>
-            <td class="amount pos">~56–81 Md€</td>
-            <td class="amount" style="color:#a32d2d">~28–42 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~45–50 Md€/an</td>
+            <td class="amount pos" style="color:#a32d2d">~34–54 Md€/an</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:linear-gradient(90deg,#ef9f27 50%,#d3d1c7 50%)"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">48 %</span></td>
           </tr>
         </tbody>
       </table>
@@ -343,11 +390,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 
   <div class="footnote">
-    ⚠️ Programme non publié à ce jour — page basée sur les déclarations publiques d'Édouard Philippe (interviews, discours) et son volet retraites du 29 septembre 2026. Mis à jour le 6 octobre 2026. ·
-    Méthode crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · Recette ajustée = montant × (score/5) ·
+    <strong>Crédibilité</strong> (note sur 5, demi-points) = combinaison du trou de financement et de la crédibilité des recettes : trou pondéré = trou de financement × (1 − part crédible des recettes), en Md€ par an ; 5 points jusqu'à 5 Md€ (marge d'incertitude ordinaire d'un chiffrage), puis 1 point de moins chaque fois que ce montant double (10 Md€ = 4 ; 20 = 3 ; 40 = 2 ; 80 = 1), minimum ½. <strong>Part crédible des recettes</strong> = pour chaque recette ou économie chiffrée par le candidat, montant jugé crédible ÷ montant annoncé ; pour une mesure non chiffrée par le candidat, note de la grille du comparateur (5 = précise et chiffrée de façon concordante ; 4 = un chiffrage indépendant solide ; 3 = mécanisme connu, paramètres manquants ; 2 = mécanisme flou ou rendement contesté ; 1 = aucun mécanisme ; 0 = contraire à la Constitution ou aux traités) ; moyenne pondérée par les montants. <strong>Trou de financement</strong> = dépenses estimées par le comparateur − recettes et économies jugées crédibles (milieu des fourchettes, Md€ par an) ; non calculé en dessous de 6 mesures chiffrées ; mesures non chiffrables exclues.<br>
+    ⚠️ Programme non publié à ce jour — page basée sur les déclarations publiques d'Édouard Philippe (interviews, discours), son volet retraites du 29 septembre 2026 et ses annonces du 8 octobre 2026 (« L'Heure de vérité », France 2). Mis à jour le 12 octobre 2026. ·
+    Méthode · Crédibilité de chaque recette (colonne « Créd. ») = montant jugé crédible par le comparateur / montant annoncé par le candidat ; 1 point = 20 %. Crédibilité des recettes = moyenne de ces lignes pondérée par les montants, soit Σ comparateur / Σ candidat (milieu des fourchettes, recettes chiffrées par le candidat seulement) ·
     Sources : <a href="https://www.publicsenat.fr/actualites/economie/entreprises-un-deal-a-250-milliards-deuros-sur-un-quinquennat-que-represente-la-proposition-dedouard-philippe" target="_blank">Public Sénat — Deal 250 Md€</a> ·
     <a href="https://francebudget.fr/scenarios/renaissance-2027" target="_blank">France Budget — proxy Renaissance</a> ·
-    <a href="https://www.journaldunet.com/business/action-publique/1555605-edouard-philippe-devoile-son-projet-de-reforme-des-retraites-pour-la-presidentielle-2027-prevoyant-un-depart-a-65-ans-et-45-annuites/" target="_blank">Journal du Net — retraites</a>
+    <a href="https://www.journaldunet.com/business/action-publique/1555605-edouard-philippe-devoile-son-projet-de-reforme-des-retraites-pour-la-presidentielle-2027-prevoyant-un-depart-a-65-ans-et-45-annuites/" target="_blank">Journal du Net — retraites</a> ·
+    <a href="https://www.journaldunet.com/business/action-publique/1556123-edouard-philippe-presente-ses-principales-mesures-pour-la-presidentielle-de-2027/" target="_blank">Journal du Net — mesures du 8 octobre 2026</a> ·
+    <a href="https://lcp.fr/actualites/allocations-familiales-edouard-philippe-propose-350-euros-des-le-premier-enfant-443576" target="_blank">LCP — allocations familiales</a> ·
+    <a href="https://fr.euronews.com/2026/10/09/presidentielle-2027-edouard-philippe-mise-sur-le-travail-et-la-reduction-des-depenses-publ" target="_blank">Euronews (AP) — travail et dépenses publiques</a>
   </div>
 
 </div>

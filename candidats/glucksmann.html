@@ -80,6 +80,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   .prog-table td.amount { white-space: normal; }
   .prog-table td, .prog-table th { overflow-wrap: anywhere; }
 }
+@media (max-width: 1024px) {
+  .cols { grid-template-columns: 1fr; }
+  .prog-table td.amount { white-space: normal; }
+}
+@media (max-width: 1024px) {
+  .prog-table td.amount, .prog-table th.r { overflow-wrap: normal; word-break: normal; min-width: 64px; }
+}
+@media (max-width: 360px) {
+  .prog-table td.amount, .prog-table th.r { min-width: 48px; font-size: 11px; }
+  .prog-table td, .prog-table th { padding-left: 4px; padding-right: 4px; }
+}
 </style>
 </head>
 <body>
@@ -94,24 +105,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="cand-party">Place Publique / PS</div>
       <div class="badges">
         <span class="badge b-green">Candidat déclaré — 23 août 2026</span>
-        <span class="badge b-blue">Primaire : 9-10 et 16-17 octobre 2026</span>
+        <span class="badge b-blue">Vainqueur de la primaire — 11 octobre 2026</span>
         <span class="badge b-orange">Programme partiel — déclarations seulement</span>
       </div>
       <div class="cred-header">
-        <span class="cred-header-label">Crédibilité des recettes</span>
-        <span class="dots-lg">
-          <span class="dot-lg" style="background:#d85a30"></span>
-          <span class="dot-lg" style="background:#d85a30"></span>
-          <span class="dot-lg" style="background:#d3d1c7"></span>
-          <span class="dot-lg" style="background:#d3d1c7"></span>
-          <span class="dot-lg" style="background:#d3d1c7"></span>
-        </span>
+        <span class="cred-header-label">Crédibilité : données insuffisantes · Trou de financement : données insuffisantes · Recettes crédibles : 35 %</span>
+        <span class="dots-lg"><span class="dot-lg" style="background:#d3d1c7"></span><span class="dot-lg" style="background:#d3d1c7"></span><span class="dot-lg" style="background:#d3d1c7"></span><span class="dot-lg" style="background:#d3d1c7"></span><span class="dot-lg" style="background:#d3d1c7"></span></span>
       </div>
     </div>
   </div>
 
   <div class="alert">
-    ℹ️ Candidature officialisée le 23 août 2026. Raphaël Glucksmann affronte Olivier Faure, Jérôme Guedj, Emmanuel Maurel et Ségolène Royal à la primaire sociale-démocrate (Parti socialiste et Place publique) : premier tour les 9 et 10 octobre, second tour les 16 et 17 octobre 2026. Pas de programme complet : grands axes seulement (indépendance énergétique, autonomie technologique et industrielle). Mesure rapportée par l'AFP le 15 septembre : baisse des cotisations salariales financée par une taxation accrue des grands héritages.
+    ℹ️ Candidature officialisée le 23 août 2026. Désigné candidat de la gauche sociale-démocrate (Parti socialiste et Place publique) dès le premier tour de la primaire des 9 et 10 octobre 2026, avec 66,13 % des voix (79 613 voix), devant Olivier Faure (14,48 %), Ségolène Royal (7,62 %), Emmanuel Maurel (5,92 %) et Jérôme Guedj (5,83 %). Pas de second tour. Aucune mesure économique nouvelle annoncée lors de sa désignation. Pas de programme complet : grands axes seulement (indépendance énergétique, autonomie technologique et industrielle). Mesure rapportée par l'AFP le 15 septembre : baisse des cotisations salariales financée par une taxation accrue des grands héritages.
   </div>
 
   <!-- INDICATEURS -->
@@ -146,6 +151,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <span><span class="lsq" style="background:#e24b4a"></span>Très peu crédible ●○○○○</span>
   </div>
 
+  <div class="legend" style="margin-top:-6px"><span><strong>Candidat</strong> : chiffre publié par le candidat ou son parti (« — » = aucun)</span><span><strong>Comparateur</strong> : notre estimation à partir de sources publiques, méthode et sources dans le détail de chaque ligne</span><span>Montants en Md€ par an</span></div>
+
   <!-- DEUX COLONNES -->
   <div class="cols">
 
@@ -153,18 +160,46 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div>
       <div class="col-head head-dep" onclick="toggle('dep')">Dépenses supplémentaires <span class="toggle-btn" id="dep-btn">▼ Détail</span></div>
       <table class="prog-table">
-        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Coût / an</th></tr></thead>
+        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Candidat</th><th class="r">Comparateur</th></tr></thead>
         <tbody>
           <tr class="detail-dep" style="display:none">
             <td>Revalorisation des enseignants (+10% puis jusqu'à +25%)
-              <div class="row-detail">+10% immédiat dès l'élection, puis hausses progressives jusqu'à +25% selon la progression de carrière. Financé en partie par réduction de postes administratifs au sein de l'Éducation nationale. Coût total estimé à 6 Md€/an selon Glucksmann.</div>
+              <div class="row-detail">+10% immédiat dès l'élection, puis hausses progressives jusqu'à +25% selon la progression de carrière. Financé en partie par réduction de postes administratifs au sein de l'Éducation nationale. Coût total estimé à 6 Md€/an selon Glucksmann. <br><strong>Comparateur :</strong> chiffre du candidat repris, non recalculé.</div>
               <span class="tag tag-off">Déclarations publiques</span>
             </td>
-            <td class="amount neg">~6 Md€</td>
+            <td class="amount neg">6 (Glucksmann)</td><td class="amount neg">~6 Md€</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Service civique obligatoire de 10 mois
+              <div class="row-detail"><strong>Comparateur :</strong> 800 000 jeunes × 4 600 à 6 200 € (coût actuel par volontaire ramené à 10 mois, ou indemnité complète) = 3,7 à 5,0, plus l'encadrement pour 6 fois plus de jeunes. <a href="https://www.maire-info.com/2026/jeunesse/service-civique-un-dispositif-plebiscite-par-les-francais-mais-dote-de-10-millions-deuros-de-moins-en-2027-art26-31136" target="_blank">Maire-info</a></div>
+              <span class="tag tag-off">Livre, mai 2026</span>
+            </td>
+            <td class="amount muted">—</td>
+            <td class="amount neg">4–8 Md€</td>
+            
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Plan d'investissement vert (100 Md€ sur 10 ans)
+              <div class="row-detail"><strong>Comparateur :</strong> 100 / 10 = 10 Md€ par an si entièrement public ; moins si une part est privée ou européenne. Source secondaire seulement (ÉlyséeScope).</div>
+              <span class="tag tag-off">Déclarations publiques</span>
+            </td>
+            <td class="amount neg">10 (100 sur 10 ans)</td>
+            <td class="amount neg">0–10 Md€</td>
+            
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Baisse des cotisations salariales financée par les grands héritages
+              <div class="row-detail">Ni barème de la baisse ni barème de la taxe publiés.</div>
+              <span class="tag tag-off">AFP, 15 septembre 2026</span>
+            </td>
+            <td class="amount muted">—</td>
+            <td class="amount muted">non chiffrable</td>
+            
           </tr>
           <tr class="tot">
             <td>Total dépenses identifiées</td>
-            <td class="amount neg">~6 Md€/an</td>
+            <td class="amount neg">~16 Md€/an</td>
+            <td class="amount neg">~10–24 Md€/an</td>
           </tr>
         </tbody>
       </table>
@@ -174,7 +209,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div>
       <div class="col-head head-rec" onclick="toggle('rec')">Recettes supplémentaires <span class="toggle-btn" id="rec-btn">▼ Détail</span></div>
       <table class="prog-table">
-        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Annoncé</th><th class="r">Ajusté</th><th>Créd.</th></tr></thead>
+        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Candidat</th><th class="r">Comparateur</th><th>Créd.</th></tr></thead>
         <tbody>
           <tr class="detail-rec" style="display:none">
             <td>Taxe sur les méga-héritages (>2 M€)
@@ -182,23 +217,32 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-est">Pas de barème détaillé</span>
             </td>
             <td class="amount pos">~15 Md€</td>
-            <td class="amount muted">~3–6 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~3–6 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">30 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Réduction de postes administratifs — Éducation nationale
               <div class="row-detail">Redéploiement de postes administratifs vers la revalorisation salariale des enseignants. Non chiffré indépendamment.</div>
               <span class="tag tag-est">Non chiffré</span>
             </td>
-            <td class="amount muted">n.d.</td>
+            <td class="amount muted">non chiffrable</td>
             <td class="amount muted">—</td>
             <td><span class="dots"><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
           </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Taxe Zucman (2 % au-delà de 100 M€ de patrimoine)
+              <div class="row-detail"><strong>Comparateur :</strong> fourchette contradictoire, non tranchée — 15 à 25 (Zucman 2025) ; ≈ 5 (OFCE 2026, Conseil d'analyse économique 2025, effet de l'optimisation). <a href="https://www.publicsenat.fr/actualites/economie/budget-la-taxation-des-ultra-riches-nentrainerait-pas-dexil-fiscal-significatif" target="_blank">CAE</a> · <a href="https://www.ofce.fr/wp/2026/6/v0/OFCE_SL.html" target="_blank">OFCE</a> <strong>Crédibilité (grille) :</strong> 2/5 — rendement contesté (5 à 25 Md€), risque constitutionnel.</div>
+              <span class="tag tag-off">Soutien déclaré</span>
+            </td>
+            <td class="amount muted">—</td>
+            <td class="amount pos">5–20 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">grille : 2/5</span></td>
+          </tr>
           <tr class="tot">
             <td>Total recettes identifiées</td>
-            <td class="amount pos">~15 Md€</td>
-            <td class="amount" style="color:#a32d2d">~3–6 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~15 Md€/an</td>
+            <td class="amount pos" style="color:#a32d2d">~8–26 Md€/an</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:linear-gradient(90deg,#d85a30 50%,#d3d1c7 50%)"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">35 %</span></td>
           </tr>
         </tbody>
       </table>
@@ -207,11 +251,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 
   <div class="footnote">
-    ⚠️ Page initiée — programme complet non publié. Données basées sur les déclarations de Raphaël Glucksmann (août–septembre 2026). Mis à jour le 6 octobre 2026. ·
-    Méthode crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · Recette ajustée = montant × (score/5) ·
+    <strong>Crédibilité</strong> (note sur 5, demi-points) = combinaison du trou de financement et de la crédibilité des recettes : trou pondéré = trou de financement × (1 − part crédible des recettes), en Md€ par an ; 5 points jusqu'à 5 Md€ (marge d'incertitude ordinaire d'un chiffrage), puis 1 point de moins chaque fois que ce montant double (10 Md€ = 4 ; 20 = 3 ; 40 = 2 ; 80 = 1), minimum ½. <strong>Part crédible des recettes</strong> = pour chaque recette ou économie chiffrée par le candidat, montant jugé crédible ÷ montant annoncé ; pour une mesure non chiffrée par le candidat, note de la grille du comparateur (5 = précise et chiffrée de façon concordante ; 4 = un chiffrage indépendant solide ; 3 = mécanisme connu, paramètres manquants ; 2 = mécanisme flou ou rendement contesté ; 1 = aucun mécanisme ; 0 = contraire à la Constitution ou aux traités) ; moyenne pondérée par les montants. <strong>Trou de financement</strong> = dépenses estimées par le comparateur − recettes et économies jugées crédibles (milieu des fourchettes, Md€ par an) ; non calculé en dessous de 6 mesures chiffrées ; mesures non chiffrables exclues.<br>
+    ⚠️ Page initiée — programme complet non publié. Données basées sur les déclarations de Raphaël Glucksmann (août–septembre 2026). Mis à jour le 12 octobre 2026. ·
+    Méthode · Crédibilité de chaque recette (colonne « Créd. ») = montant jugé crédible par le comparateur / montant annoncé par le candidat ; 1 point = 20 %. Crédibilité des recettes = moyenne de ces lignes pondérée par les montants, soit Σ comparateur / Σ candidat (milieu des fourchettes, recettes chiffrées par le candidat seulement) ·
     Sources : <a href="https://www.franceinfo.fr/replay-radio/le-vrai-du-faux/augmenter-les-salaires-en-taxant-les-plus-gros-heritages-la-proposition-de-raphael-glucksmann-est-elle-realiste_8076284.html" target="_blank">Franceinfo — Glucksmann / successions</a> ·
     <a href="https://www.elyseescope.com/questions/glucksmann-mega-heritages-taxe" target="_blank">ÉlyséeScope — méga-héritages</a> ·
-    <a href="https://lcp.fr/actualites/presidentielle-dates-candidats-prix-tout-ce-qu-il-faut-savoir-sur-la-primaire-sociale" target="_blank">LCP — primaire</a> · <a href="https://www.sudradio.fr/societe/salaires-carburants-mobilisations-le-pouvoir-dachat-simpose-dans-la-campagne" target="_blank">AFP — pouvoir d'achat, 15 septembre 2026</a>
+    <a href="https://lcp.fr/actualites/primaire-socialiste-vainqueur-des-le-1er-tour-raphael-glucksmann-sera-le-candidat-de-la" target="_blank">LCP — résultats de la primaire, 11 octobre 2026</a> · <a href="https://www.sudradio.fr/societe/salaires-carburants-mobilisations-le-pouvoir-dachat-simpose-dans-la-campagne" target="_blank">AFP — pouvoir d'achat, 15 septembre 2026</a>
   </div>
 
 </div>

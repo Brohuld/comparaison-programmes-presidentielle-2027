@@ -92,6 +92,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   .prog-table td.amount { white-space: normal; }
   .prog-table td, .prog-table th { overflow-wrap: anywhere; }
 }
+@media (max-width: 1024px) {
+  .cols { grid-template-columns: 1fr; }
+  .prog-table td.amount { white-space: normal; }
+}
+@media (max-width: 1024px) {
+  .prog-table td.amount, .prog-table th.r { overflow-wrap: normal; word-break: normal; min-width: 64px; }
+}
+@media (max-width: 360px) {
+  .prog-table td.amount, .prog-table th.r { min-width: 48px; font-size: 11px; }
+  .prog-table td, .prog-table th { padding-left: 4px; padding-right: 4px; }
+}
 </style>
 </head>
 <body>
@@ -110,14 +121,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <span class="badge b-green">Règle d'or constitutionnelle</span>
       </div>
       <div class="cred-header">
-        <span class="cred-header-label">Crédibilité des économies</span>
-        <span class="dots-lg">
-          <span class="dot-lg" style="background:#ef9f27"></span>
-          <span class="dot-lg" style="background:#ef9f27"></span>
-          <span class="dot-lg" style="background:#ef9f27"></span>
-          <span class="dot-lg" style="background:#d3d1c7"></span>
-          <span class="dot-lg" style="background:#d3d1c7"></span>
-        </span>
+        <span class="cred-header-label">Crédibilité : 4/5 · Trou de financement : ≈ 22 Md€/an · Recettes crédibles : 55 %</span>
+        <span class="dots-lg"><span class="dot-lg" style="background:#639922"></span><span class="dot-lg" style="background:#639922"></span><span class="dot-lg" style="background:#639922"></span><span class="dot-lg" style="background:#639922"></span><span class="dot-lg" style="background:#d3d1c7"></span></span>
       </div>
     </div>
   </div>
@@ -219,6 +224,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <span><span class="lsq" style="background:#e24b4a"></span>Très peu crédible ●○○○○</span>
   </div>
 
+  <div class="legend" style="margin-top:-6px"><span><strong>Candidat</strong> : chiffre publié par le candidat ou son parti (« — » = aucun)</span><span><strong>Comparateur</strong> : notre estimation à partir de sources publiques, méthode et sources dans le détail de chaque ligne</span><span>Montants en Md€ par an</span></div>
+
   <!-- DEUX COLONNES -->
   <div class="cols">
 
@@ -226,39 +233,58 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div>
       <div class="col-head head-dep" onclick="toggle('dep')">Dépenses supplémentaires <span class="toggle-btn" id="dep-btn">▼ Détail</span></div>
       <table class="prog-table">
-        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Coût / an</th></tr></thead>
+        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Candidat</th><th class="r">Comparateur</th></tr></thead>
         <tbody>
           <tr class="detail-dep" style="display:none">
             <td>Suppression des taxes de production (C3S, CVAE, CFE industriel)
               <div class="row-detail">La CVAE est déjà en cours de suppression progressive jusqu'en 2030 sous la loi actuelle. Retailleau accélère le calendrier et y ajoute la C3S (~4 Md€) et la part industrielle de la CFE. Coût pour l'État estimé à ~15 Md€/an.</div>
               <span class="tag tag-off">Programme LR</span>
             </td>
-            <td class="amount neg">~−15 Md€ de recettes</td>
+            <td class="amount muted">—</td><td class="amount neg">~−15 Md€ de recettes</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Allègement des charges sociales patronales
               <div class="row-detail">Réforme du financement de la protection sociale pour alléger les charges patronales. Mécanisme de compensation non précisé à ce stade.</div>
               <span class="tag tag-est">Orientations publiées</span>
             </td>
-            <td class="amount neg">~−15 Md€ de recettes</td>
+            <td class="amount muted">—</td><td class="amount neg">~−15 Md€ de recettes</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Exonération heures supplémentaires (IS + cotisations)
               <div class="row-detail">Ni impôt sur le revenu ni cotisations sociales sur les heures supplémentaires.</div>
               <span class="tag tag-off">Programme LR</span>
             </td>
-            <td class="amount neg">~−10 Md€ de recettes</td>
+            <td class="amount muted">—</td><td class="amount neg">~−10 Md€ de recettes</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Capitalisation complémentaire retraites
               <div class="row-detail">Pour les jeunes : part de 25 à 30 % des futures retraites, rendement minimum de 4 %, financée par une cotisation de 1 % du salaire brut. Coût budgétaire direct non chiffré.</div>
               <span class="tag tag-est">Non chiffré</span>
             </td>
-            <td class="amount muted">n.d.</td>
+            <td class="amount muted">—</td><td class="amount muted">non chiffrable</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Suppression des certificats d'économies d'énergie (−15 à −17 c/litre selon lui)
+              <div class="row-detail"><strong>Comparateur :</strong> 0 pour l'État sans compensation ; 1 à 1,2 pour maintenir la part des aides de l'Anah financée par les CEE ; jusqu'à ≈ 8 de baisse de coûts pour ménages et entreprises (montant 2026). Effet par litre : 11,4 à 13,7 c selon l'administration. <a href="https://www.connaissancedesenergies.org/afp/prix-du-carburant-a-quoi-servent-les-certificats-denergie-260923" target="_blank">AFP</a></div>
+              <span class="tag tag-off">AFP, 15 septembre 2026</span>
+            </td>
+            <td class="amount muted">—</td>
+            <td class="amount neg">0–1,2 Md€</td>
+            
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Défense : +50 Md€ sur la loi de programmation militaire
+              <div class="row-detail"><strong>Comparateur :</strong> la loi actualisée (juin 2026) ajoute déjà 36 Md€ ; 50 − 36 = 14 Md€ sur 4 ans = 3,5 par an ; +7,6 en 2030. <a href="https://www.senat.fr/rap/l25-777/l25-7771.pdf" target="_blank">Sénat</a></div>
+              <span class="tag tag-off">Amendement LR, juin 2026</span>
+            </td>
+            <td class="amount neg">+50 cumulés 2026-2030</td>
+            <td class="amount neg">3,5 Md€</td>
+            
           </tr>
           <tr class="tot">
             <td>Total coûts fiscaux identifiés</td>
-            <td class="amount neg">~−40 Md€/an</td>
+            <td class="amount muted">—</td>
+            <td class="amount neg">~43–45 Md€/an</td>
           </tr>
         </tbody>
       </table>
@@ -268,7 +294,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div>
       <div class="col-head head-rec" onclick="toggle('rec')">Économies &amp; recettes <span class="toggle-btn" id="rec-btn">▼ Détail</span></div>
       <table class="prog-table">
-        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Annoncé / an</th><th class="r">Ajusté / an</th><th>Créd.</th></tr></thead>
+        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Candidat</th><th class="r">Comparateur</th><th>Créd.</th></tr></thead>
         <tbody>
           <tr class="detail-rec" style="display:none">
             <td>Réforme de l'assurance chômage
@@ -277,7 +303,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
             </td>
             <td class="amount pos">−13 Md€</td>
             <td class="amount pos">~−8–11 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td><span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">73 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Retraites : âge minimal 63 ans, taux plein automatique à 65 ans
@@ -286,7 +312,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
             </td>
             <td class="amount pos">−8 Md€</td>
             <td class="amount pos">~−5 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">62 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Réduction globale des dépenses publiques (80 Md€ sur le quinquennat)
@@ -294,14 +320,32 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-warn">Pas de détail des coupes</span>
             </td>
             <td class="amount pos">−16 Md€</td>
-            <td class="amount muted">~−6 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~−6 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">38 %</span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Resserrement de l'aide médicale de l'État
+              <div class="row-detail"><strong>Comparateur :</strong> dépense 1,14 Md€ (2026) ; passage en aide médicale d'urgence, moins un report vers l'hôpital de 0,4 à 0,7 (Montaigne). <a href="https://www.senat.fr/rap/l25-139-327/l25-139-3272.html" target="_blank">Sénat</a> <strong>Crédibilité (grille) :</strong> 3/5 — dépense connue ; report vers l'hôpital non mesuré.</div>
+              <span class="tag tag-off">Grandes lignes, janvier 2026</span>
+            </td>
+            <td class="amount muted">—</td>
+            <td class="amount pos">0,4–1,1 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">grille : 3/5</span></td>
+          </tr>
+          <tr class="detail-rec" style="display:none">
+            <td>Aides sociales plafonnées à 70 % du SMIC
+              <div class="row-detail"><strong>Comparateur :</strong> aucune étude publique ; 7 (Wauquiez, sans méthode) à 34 (IFRAP, think tank libéral). Il manque la liste des aides incluses.</div>
+              <span class="tag tag-off">Grandes lignes, janvier 2026</span>
+            </td>
+            <td class="amount muted">—</td>
+            <td class="amount muted">non chiffrable</td>
+            <td class="amount muted">—</td>
           </tr>
           <tr class="tot">
             <td>Total économies identifiées</td>
-            <td class="amount pos">~−37 Md€/an</td>
-            <td class="amount pos">~−19–22 Md€/an</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~37 Md€/an</td>
+            <td class="amount pos" style="color:#a32d2d">~19–24 Md€/an</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">55 %</span></td>
           </tr>
         </tbody>
       </table>
@@ -310,8 +354,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 
   <div class="footnote">
-    ⚠️ Programme complet non publié — basé sur les orientations de Bruno Retailleau (février–septembre 2026) et le programme LR. Mis à jour le 6 octobre 2026. ·
-    Méthode crédibilité : indice pondéré = Σ(montant × score) / Σ(montant) · Économie ajustée = montant × (score/5) · Tous les montants en Md€ par an ·
+    <strong>Crédibilité</strong> (note sur 5, demi-points) = combinaison du trou de financement et de la crédibilité des recettes : trou pondéré = trou de financement × (1 − part crédible des recettes), en Md€ par an ; 5 points jusqu'à 5 Md€ (marge d'incertitude ordinaire d'un chiffrage), puis 1 point de moins chaque fois que ce montant double (10 Md€ = 4 ; 20 = 3 ; 40 = 2 ; 80 = 1), minimum ½. <strong>Part crédible des recettes</strong> = pour chaque recette ou économie chiffrée par le candidat, montant jugé crédible ÷ montant annoncé ; pour une mesure non chiffrée par le candidat, note de la grille du comparateur (5 = précise et chiffrée de façon concordante ; 4 = un chiffrage indépendant solide ; 3 = mécanisme connu, paramètres manquants ; 2 = mécanisme flou ou rendement contesté ; 1 = aucun mécanisme ; 0 = contraire à la Constitution ou aux traités) ; moyenne pondérée par les montants. <strong>Trou de financement</strong> = dépenses estimées par le comparateur − recettes et économies jugées crédibles (milieu des fourchettes, Md€ par an) ; non calculé en dessous de 6 mesures chiffrées ; mesures non chiffrables exclues.<br>
+    ⚠️ Programme complet non publié — basé sur les orientations de Bruno Retailleau (février–septembre 2026) et le programme LR. Mis à jour le 12 octobre 2026. ·
+    Méthode · Crédibilité de chaque recette (colonne « Créd. ») = montant jugé crédible par le comparateur / montant annoncé par le candidat ; 1 point = 20 %. Crédibilité des recettes = moyenne de ces lignes pondérée par les montants, soit Σ comparateur / Σ candidat (milieu des fourchettes, recettes chiffrées par le candidat seulement) · Tous les montants en Md€ par an ·
     Sources : <a href="https://monvote2027.fr/candidat/retailleau" target="_blank">MonVote2027 — programme Retailleau</a> ·
     <a href="https://lcp.fr/actualites/retraites-bruno-retailleau-veut-un-age-minimal-de-depart-a-63-ans-et-un-taux-plein-a-65" target="_blank">LCP — retraites, 23 septembre 2026</a> ·
     <a href="https://francebudget.fr/scenarios/lr-2027" target="_blank">France Budget — scénario LR</a> · <a href="https://www.sudradio.fr/societe/salaires-carburants-mobilisations-le-pouvoir-dachat-simpose-dans-la-campagne" target="_blank">AFP — pouvoir d'achat, 15 septembre 2026</a> ·

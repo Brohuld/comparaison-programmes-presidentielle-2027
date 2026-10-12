@@ -90,6 +90,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   .prog-table td.amount { white-space: normal; }
   .prog-table td, .prog-table th { overflow-wrap: anywhere; }
 }
+@media (max-width: 1024px) {
+  .cols { grid-template-columns: 1fr; }
+  .prog-table td.amount { white-space: normal; }
+}
+@media (max-width: 1024px) {
+  .prog-table td.amount, .prog-table th.r { overflow-wrap: normal; word-break: normal; min-width: 64px; }
+}
+@media (max-width: 360px) {
+  .prog-table td.amount, .prog-table th.r { min-width: 48px; font-size: 11px; }
+  .prog-table td, .prog-table th { padding-left: 4px; padding-right: 4px; }
+}
 </style>
 </head>
 <body>
@@ -108,14 +119,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <span class="badge b-red">Déficit projeté −6,3% PIB 2030</span>
       </div>
       <div class="cred-header">
-        <span class="cred-header-label">Crédibilité des recettes</span>
-        <span class="dots-lg">
-          <span class="dot-lg" style="background:#d85a30"></span>
-          <span class="dot-lg" style="background:#d85a30"></span>
-          <span class="dot-lg" style="background:#d3d1c7"></span>
-          <span class="dot-lg" style="background:#d3d1c7"></span>
-          <span class="dot-lg" style="background:#d3d1c7"></span>
-        </span>
+        <span class="cred-header-label">Crédibilité : 1/5 · Trou de financement : ≈ 126 Md€/an · Recettes crédibles : 37 %</span>
+        <span class="dots-lg"><span class="dot-lg" style="background:#e24b4a"></span><span class="dot-lg" style="background:#d3d1c7"></span><span class="dot-lg" style="background:#d3d1c7"></span><span class="dot-lg" style="background:#d3d1c7"></span><span class="dot-lg" style="background:#d3d1c7"></span></span>
       </div>
     </div>
   </div>
@@ -218,6 +223,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <span><span class="lsq" style="background:#e24b4a"></span>Très peu crédible ●○○○○</span>
   </div>
 
+  <div class="legend" style="margin-top:-6px"><span><strong>Candidat</strong> : chiffre publié par le candidat ou son parti (« — » = aucun)</span><span><strong>Comparateur</strong> : notre estimation à partir de sources publiques, méthode et sources dans le détail de chaque ligne</span><span>Montants en Md€ par an</span></div>
+
   <!-- DEUX COLONNES -->
   <div class="cols">
 
@@ -225,67 +232,77 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div>
       <div class="col-head head-dep" onclick="toggle('dep')">Dépenses supplémentaires <span class="toggle-btn" id="dep-btn">▼ Détail</span></div>
       <table class="prog-table">
-        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Coût / an</th></tr></thead>
+        <thead class="detail-dep" style="display:none"><tr><th>Mesure</th><th class="r">Candidat</th><th class="r">Comparateur</th></tr></thead>
         <tbody>
           <tr class="detail-dep" style="display:none">
             <td>SMIC porté à 2 176 € brut (≈ 1 700 € net)
               <div class="row-detail">+15 % au 1er janvier 2027 (proposition de loi n° 3176, niche LFI du 29 octobre 2026). Coût porté par la Sécurité sociale, car les allègements de cotisations augmentent avec le SMIC. Chiffrage sur l'ancienne grille d'allègements ; la grille 2026 le rend probablement plus élevé.</div>
               <span class="tag tag-est">IRES · Institut Montaigne</span>
             </td>
-            <td class="amount neg">~15–20 Md€</td>
+            <td class="amount muted">—</td><td class="amount neg">~15–20 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Retraite à 60 ans avec 40 annuités
-              <div class="row-detail">Abrogation de la réforme Macron 2023.</div>
-              <span class="tag tag-est">Estimation non sourcée</span>
+              <div class="row-detail">Abrogation de la réforme Macron 2023. <br><strong>Comparateur :</strong> abrogation de 2023 (8,2) + retour aux bornes d'avant 2010 (27 à 36), Institut Montaigne ; hors recettes perdues, qui peuvent dépasser le coût direct (Cour des comptes 2025). <a href="https://www.institutmontaigne.org/legislatives-2024/nouveau-front-populaire/abroger-la-reforme-des-retraites-restaurer-la-retraite-a-60-ans-en-prenant-en-compte-le-rsa-en-portant-le-minimum-contributif-au-smic" target="_blank">Montaigne</a> · <a href="https://www.vie-publique.fr/files/rapport/pdf/297428.pdf" target="_blank">Cour des comptes</a></div>
+              <span class="tag tag-est">Sources : voir détail</span>
             </td>
-            <td class="amount neg">~15–25 Md€</td>
+            <td class="amount neg">27 (2022) · ≈ 50 (2024)</td><td class="amount neg">35–45 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>32 heures dans les métiers pénibles ou de nuit
-              <div class="row-detail">Retour aux 35 heures effectives ; généralisation des 32 heures renvoyée à la négociation collective (édition 2025 du programme, citée par votons-2027.fr et france-vote.fr, consultés le 11 octobre 2026). Champ « métiers pénibles » non défini : coût non chiffrable en l'état.</div>
+              <div class="row-detail">Retour aux 35 heures effectives ; généralisation des 32 heures renvoyée à la négociation collective (édition 2025 du programme, citée par votons-2027.fr et france-vote.fr, consultés le 11 octobre 2026). Champ « métiers pénibles » non défini : coût non chiffrable en l'état. <br><strong>Comparateur :</strong> il manque la liste des métiers visés, la part de salariés publics et le maintien du salaire. Repère : 3,5 millions de salariés travaillent la nuit (DARES, 2019).</div>
               <span class="tag tag-est">Non chiffré</span>
             </td>
-            <td class="amount neg">n.d.</td>
+            <td class="amount muted">—</td><td class="amount muted">non chiffrable</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>+1 million d'agents publics
-              <div class="row-detail">Éducation, hôpital, sécurité, services de proximité.</div>
-              <span class="tag tag-est">Estimation non sourcée</span>
+              <div class="row-detail">Éducation, hôpital, sécurité, services de proximité. <br><strong>Comparateur, en régime de croisière :</strong> 1 million × 35 à 61 k€ par agent (salaire brut moyen 40 584 €/an, INSEE 2024, ou recrue débutante, Fipeco, × 1,4 à 1,5 de cotisations). Montée en charge : 8 à 12 Md€ la 1re année. <a href="https://fipeco.fr/pdf/Effectifs%20fonction%20publique.pdf" target="_blank">Fipeco</a></div>
+              <span class="tag tag-est">Sources : voir détail</span>
             </td>
-            <td class="amount neg">~40–50 Md€</td>
+            <td class="amount neg">75 (2022, avec la revalorisation des fonctionnaires)</td><td class="amount neg">40–60 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Planification écologique
-              <div class="row-detail">Rénovation thermique, transports, énergie.</div>
-              <span class="tag tag-est">Estimation non sourcée</span>
+              <div class="row-detail">Rénovation thermique, transports, énergie. <br><strong>Comparateur :</strong> part publique du besoin d'investissement climat supplémentaire d'ici 2030 (I4CE 2025). Montant LFI 2027 inconnu. <a href="https://www.i4ce.org/wp-content/uploads/2025/07/Panorama-des-financements-climat-ed-2025_Synthese-et-resultats.pdf" target="_blank">I4CE</a></div>
+              <span class="tag tag-est">Sources : voir détail</span>
             </td>
-            <td class="amount neg">~20–30 Md€</td>
+            <td class="amount neg">40 (2022 : 200 sur 5 ans)</td><td class="amount neg">18–52 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Gratuité de la complémentaire santé
-              <div class="row-detail">Intégration dans la Sécurité sociale.</div>
-              <span class="tag tag-est">Estimation non sourcée</span>
+              <div class="row-detail">Intégration dans la Sécurité sociale. <br><strong>Comparateur :</strong> 22,5 Md€ (Haut conseil pour l'avenir de l'assurance maladie, 2022) ; 17,1 net des frais de gestion (Montaigne) ; 32,5 au plus (dépense des complémentaires, DREES 2024). Compensé pour les ménages par la fin des cotisations aux mutuelles. <a href="https://www.vie-publique.fr/sites/default/files/rapport/pdf/283401.pdf" target="_blank">HCAAM</a></div>
+              <span class="tag tag-est">Sources : voir détail</span>
             </td>
-            <td class="amount neg">~35 Md€</td>
+            <td class="amount neg">« coût neutre » (2022)</td><td class="amount neg">17–33 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Gratuité des transports en commun
-              <div class="row-detail">Mesure nationale compensée aux collectivités.</div>
-              <span class="tag tag-est">Estimation non sourcée</span>
+              <div class="row-detail">Mesure nationale compensée aux collectivités. <br><strong>Comparateur :</strong> recettes perdues — Île-de-France 3,8 (11,8 × 32 %, IDFM 2025) + réseaux urbains 1,5 (UTPF 2023) + TER 1 à 1,5 si inclus (reconstruction). Hors offre supplémentaire. <a href="https://www.iledefrance-mobilites.fr/actualites/comment-sont-finances-vos-transports-en-commun-" target="_blank">IDFM</a></div>
+              <span class="tag tag-est">Sources : voir détail</span>
             </td>
-            <td class="amount neg">~10–15 Md€</td>
+            <td class="amount muted">—</td><td class="amount neg">5,3–6,8 Md€</td>
           </tr>
           <tr class="detail-dep" style="display:none">
             <td>Revalorisation des enseignants (+20% immédiat)
               <div class="row-detail">+20% de rémunération dès l'élection, avec titularisation des contractuels (~130 000 agents). Sur ~870 000 enseignants, +20% représente ~6 Md€/an de masse salariale supplémentaire. Annoncé sans financement spécifique identifié.</div>
               <span class="tag tag-est">Déclarations publiques</span>
             </td>
-            <td class="amount neg">~5–7 Md€</td>
+            <td class="amount muted">—</td><td class="amount neg">~5–7 Md€</td>
+          </tr>
+          <tr class="detail-dep" style="display:none">
+            <td>Garantie d'emploi pour les chômeurs de longue durée
+              <div class="row-detail"><strong>Comparateur :</strong> 566 000 à 700 000 personnes × 11,3 à 13,7 k€ de coût net par emploi (comité scientifique Territoires zéro chômeur, 2025) ; coût brut 15 à 19 Md€. Montaigne (2022) : 14,3 net, avec des coûts évités plus faibles — non tranché. <a href="https://www.banquedesterritoires.fr/territoires-zero-chomeur-de-longue-duree-le-comite-scientifique-appelle-poursuivre-malgre-un-cout" target="_blank">Banque des territoires</a></div>
+              <span class="tag tag-off">Programme LFI</span>
+            </td>
+            <td class="amount muted">—</td>
+            <td class="amount neg">6–10 Md€</td>
+            
           </tr>
           <tr class="tot">
             <td>Total estimé</td>
-            <td class="amount neg">~140–182 Md€/an</td>
+            <td class="amount neg">~142–165 Md€/an</td>
+            <td class="amount neg">~141–234 Md€/an</td>
           </tr>
         </tbody>
       </table>
@@ -295,7 +312,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div>
       <div class="col-head head-rec" onclick="toggle('rec')">Recettes supplémentaires <span class="toggle-btn" id="rec-btn">▼ Détail</span></div>
       <table class="prog-table">
-        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Annoncé</th><th class="r">Ajusté</th><th>Créd.</th></tr></thead>
+        <thead class="detail-rec" style="display:none"><tr><th>Mesure</th><th class="r">Candidat</th><th class="r">Comparateur</th><th>Créd.</th></tr></thead>
         <tbody>
           <tr class="detail-rec" style="display:none">
             <td>Réforme héritage + max 12 M€
@@ -303,8 +320,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Plan Justice Fiscale 2022</span>
             </td>
             <td class="amount pos">+17 Md€</td>
-            <td class="amount muted">~14 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~14 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">82 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>IR : passage à 14 tranches
@@ -312,8 +329,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Plan Justice Fiscale 2022</span>
             </td>
             <td class="amount pos">+5 Md€</td>
-            <td class="amount muted">~4 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~4 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">80 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Suppression de la flat tax
@@ -321,8 +338,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Plan Justice Fiscale 2022</span>
             </td>
             <td class="amount pos">+1,8 Md€</td>
-            <td class="amount muted">~1,4 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~1,4 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">78 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Taxe foncière progressive
@@ -330,8 +347,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Plan Justice Fiscale 2022</span>
             </td>
             <td class="amount pos">+1,5 Md€</td>
-            <td class="amount muted">~1,2 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~1,2 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#639922"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">80 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>ISF renforcé + volet climatique
@@ -339,8 +356,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Plan Justice Fiscale 2022</span>
             </td>
             <td class="amount pos">+10 Md€</td>
-            <td class="amount muted">~6 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~6 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">60 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>IS progressif — PME vs grands groupes
@@ -348,8 +365,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Plan Justice Fiscale 2022</span>
             </td>
             <td class="amount pos">+11 Md€</td>
-            <td class="amount muted">~6,6 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~6,6 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#ef9f27"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">60 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Taxe sur les transactions financières
@@ -357,8 +374,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Plan Justice Fiscale 2022</span>
             </td>
             <td class="amount pos">+5 Md€</td>
-            <td class="amount muted">~2 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~2 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">40 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Impôt universel sur les entreprises
@@ -366,8 +383,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Plan Justice Fiscale 2022</span>
             </td>
             <td class="amount pos">+26 Md€</td>
-            <td class="amount muted">~10,4 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~10,4 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">40 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Lutte contre la fraude — DGFiP
@@ -375,8 +392,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Plan Justice Fiscale 2022</span>
             </td>
             <td class="amount pos">+26 Md€</td>
-            <td class="amount muted">~5,2 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#e24b4a"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~5,2 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#e24b4a"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">20 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Suppression des niches fiscales
@@ -384,8 +401,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-off">Plan Justice Fiscale 2022</span>
             </td>
             <td class="amount pos">+54 Md€</td>
-            <td class="amount muted">~10,8 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#e24b4a"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~10,8 Md€</td>
+            <td><span class="dots"><span class="dot" style="background:#e24b4a"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">20 %</span></td>
           </tr>
           <tr class="detail-rec" style="display:none">
             <td>Annulation de la dette détenue par la BCE
@@ -393,14 +410,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
               <span class="tag tag-est">Hors traités UE</span>
             </td>
             <td class="amount pos">~9 Md€</td>
-            <td class="amount muted">~0</td>
-            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~0</td>
+            <td><span class="dots"><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">0 %</span></td>
           </tr>
           <tr class="tot">
             <td>Total recettes</td>
-            <td class="amount pos">+166 Md€</td>
-            <td class="amount" style="color:#a32d2d">~61 Md€</td>
-            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span></td>
+            <td class="amount pos">~166 Md€/an</td>
+            <td class="amount pos" style="color:#a32d2d">~61 Md€/an</td>
+            <td><span class="dots"><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d85a30"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span><span class="dot" style="background:#d3d1c7"></span></span><br><span style="font-size:10px">37 %</span></td>
           </tr>
         </tbody>
       </table>
@@ -409,7 +426,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 
   <div class="footnote">
-    Mis à jour le 11 octobre 2026 · Méthode : indice pondéré = Σ(montant × score) / Σ(montant) · Recette ajustée = montant × (score/5) ·
+    <strong>Crédibilité</strong> (note sur 5, demi-points) = combinaison du trou de financement et de la crédibilité des recettes : trou pondéré = trou de financement × (1 − part crédible des recettes), en Md€ par an ; 5 points jusqu'à 5 Md€ (marge d'incertitude ordinaire d'un chiffrage), puis 1 point de moins chaque fois que ce montant double (10 Md€ = 4 ; 20 = 3 ; 40 = 2 ; 80 = 1), minimum ½. <strong>Part crédible des recettes</strong> = pour chaque recette ou économie chiffrée par le candidat, montant jugé crédible ÷ montant annoncé ; pour une mesure non chiffrée par le candidat, note de la grille du comparateur (5 = précise et chiffrée de façon concordante ; 4 = un chiffrage indépendant solide ; 3 = mécanisme connu, paramètres manquants ; 2 = mécanisme flou ou rendement contesté ; 1 = aucun mécanisme ; 0 = contraire à la Constitution ou aux traités) ; moyenne pondérée par les montants. <strong>Trou de financement</strong> = dépenses estimées par le comparateur − recettes et économies jugées crédibles (milieu des fourchettes, Md€ par an) ; non calculé en dessous de 6 mesures chiffrées ; mesures non chiffrables exclues.<br>
+    Mis à jour le 12 octobre 2026 · Méthode · Crédibilité de chaque recette (colonne « Créd. ») = montant jugé crédible par le comparateur / montant annoncé par le candidat ; 1 point = 20 %. Crédibilité des recettes = moyenne de ces lignes pondérée par les montants, soit Σ comparateur / Σ candidat (milieu des fourchettes, recettes chiffrées par le candidat seulement) ·
     Sources : <a href="https://programme.lafranceinsoumise.fr/plans/justice-fiscale/" target="_blank">Plan Justice Fiscale LFI 2022</a> ·
     <a href="https://francebudget.fr/scenarios/lfi-2027" target="_blank">France Budget — scénario LFI</a> ·
     <a href="https://lcp.fr/actualites/presidentielle-le-programme-remanie-de-la-nouvelle-france-de-jean-luc-melenchon-sera" target="_blank">LCP — programme de novembre</a> ·
