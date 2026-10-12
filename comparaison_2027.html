@@ -36,15 +36,15 @@ body {
   padding: 2rem;
 }
 
-.page-header { max-width: 860px; margin: 0 auto 2rem; }
+.page-header { max-width: 1280px; margin: 0 auto 2rem; }
 .page-header h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
 .page-header p { font-size: 13px; color: var(--text-muted); }
 
 .grid {
-  max-width: 860px;
+  max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 12px;
 }
 
@@ -109,7 +109,17 @@ body {
 .bar-fill { height: 100%; border-radius: 3px; }
 .bar-val { font-size: 11px; font-weight: 500; text-align: right; margin-top: 3px; }
 
-.footer { max-width: 860px; margin: 1.5rem auto 0; font-size: 11px; color: var(--text-muted); line-height: 1.6; }
+.footer { max-width: 1280px; margin: 2rem auto 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.55; }
+.footer h2 { font-size: 14px; font-weight: 500; color: var(--text); margin: 0 0 .75rem; }
+.footer h3 { font-size: 12.5px; font-weight: 500; color: var(--text); margin: 0 0 .3rem; }
+.method { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1rem; }
+.method > div { background: var(--surface); border: 0.5px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+.method p { margin: 0 0 .4rem; }
+.method ul { margin: .2rem 0 0 1.1rem; padding: 0; }
+.method li { margin: .1rem 0; }
+.footer .notes { margin: 0 0 .4rem 1.1rem; padding: 0; }
+.footer .notes li { margin: .15rem 0; }
+@media (max-width: 900px) { .method { grid-template-columns: 1fr; } }
 .footer a { color: var(--text-muted); }
 </style>
 </head>
@@ -221,11 +231,48 @@ body {
 </div>
 
 <div class="footer">
-  <strong>Crédibilité</strong> (note sur 5, demi-points) = combinaison du trou de financement et de la crédibilité des recettes : trou pondéré = trou de financement × (1 − part crédible des recettes), en Md€ par an ; 5 points jusqu'à 5 Md€ (marge d'incertitude ordinaire d'un chiffrage), puis 1 point de moins chaque fois que ce montant double (10 Md€ = 4 ; 20 = 3 ; 40 = 2 ; 80 = 1), minimum ½. <strong>Part crédible des recettes</strong> = pour chaque recette ou économie chiffrée par le candidat, montant jugé crédible ÷ montant annoncé ; pour une mesure non chiffrée par le candidat, note de la grille du comparateur (5 = précise et chiffrée de façon concordante ; 4 = un chiffrage indépendant solide ; 3 = mécanisme connu, paramètres manquants ; 2 = mécanisme flou ou rendement contesté ; 1 = aucun mécanisme ; 0 = contraire à la Constitution ou aux traités) ; moyenne pondérée par les montants. <strong>Trou de financement</strong> = dépenses estimées par le comparateur − recettes et économies jugées crédibles (milieu des fourchettes, Md€ par an) ; non calculé en dessous de 6 mesures chiffrées ; mesures non chiffrables exclues.<br>
-  Déficit projeté : <a href="https://francebudget.fr" target="_blank">France Budget</a> (outil citoyen indépendant) · Barre calibrée sur −10% PIB max ·
-  Sources : déclarations officielles des candidats · Plan Justice Fiscale LFI 2022<br>
-  * Glucksmann : scénario France Budget du programme PS « Vivre libre » (proxy) · Le Pen : chiffre France Budget antérieur au contre-budget du 6 octobre 2026, qui affiche 2,3 % du PIB en 2031 ·
-  Retailleau : objectif global retenu à 80 Md€ sur le quinquennat (hypothèse)
+  <h2>Comment lire les notes</h2>
+  <div class="method">
+    <div>
+      <h3>Crédibilité (pastilles, sur 5)</h3>
+      <p>Elle combine le trou de financement et la part crédible des recettes :</p>
+      <p><strong>trou pondéré = trou de financement × (1 − part crédible des recettes)</strong>, en Md€ par an.</p>
+      <ul>
+        <li>jusqu'à 5 Md€ : 5 points</li>
+        <li>10 Md€ : 4 · 20 Md€ : 3 · 40 Md€ : 2 · 80 Md€ : 1</li>
+        <li>au-delà : ½ point</li>
+      </ul>
+      <p style="margin-top:.4rem">Un même pourcentage de recettes non crédibles pèse plus lourd sur un gros trou que sur un petit.</p>
+    </div>
+    <div>
+      <h3>Trou de financement</h3>
+      <p>Dépenses estimées par le comparateur − recettes et économies jugées crédibles, en Md€ par an (milieu des fourchettes).</p>
+      <p>Non calculé en dessous de 6 mesures chiffrées. Les mesures non chiffrables sont exclues : le trou réel peut être plus grand.</p>
+    </div>
+    <div>
+      <h3>Part crédible des recettes</h3>
+      <p>Mesure chiffrée par le candidat : montant jugé crédible ÷ montant annoncé.</p>
+      <p>Mesure non chiffrée par le candidat : note de la grille du comparateur.</p>
+      <ul>
+        <li>5 : précise, chiffrages indépendants concordants</li>
+        <li>4 : un chiffrage indépendant solide</li>
+        <li>3 : mécanisme connu, paramètres manquants</li>
+        <li>2 : mécanisme flou ou rendement contesté</li>
+        <li>1 : aucun mécanisme décrit</li>
+        <li>0 : contraire à la Constitution ou aux traités</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Déficit projeté 2030</h3>
+  <p style="margin:0 0 .8rem">Estimation de <a href="https://francebudget.fr" target="_blank">France Budget</a> (outil citoyen indépendant). Barre calibrée sur −10 % du PIB.</p>
+  <h3>Précisions</h3>
+  <ul class="notes">
+    <li>* Glucksmann : scénario France Budget du programme du PS « Vivre libre », faute de programme propre.</li>
+    <li>Le Pen : estimation France Budget antérieure au contre-budget du 6 octobre 2026, qui affiche 2,3 % du PIB en 2031.</li>
+    <li>Retailleau : objectif global de réduction des dépenses retenu à 80 Md€ sur le quinquennat (hypothèse).</li>
+    <li>Philippe : allocation familiale de 350 € comptée par famille (hypothèse).</li>
+  </ul>
+  <p style="margin:.6rem 0 0">Sources : déclarations officielles des candidats et de leurs partis ; méthode et sources de chaque chiffre dans la page de chaque candidat.</p>
 </div>
 
 </body>

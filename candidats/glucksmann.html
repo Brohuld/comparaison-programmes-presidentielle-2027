@@ -91,6 +91,43 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   .prog-table td.amount, .prog-table th.r { min-width: 48px; font-size: 11px; }
   .prog-table td, .prog-table th { padding-left: 4px; padding-right: 4px; }
 }
+/* Tableaux de détail : une seule colonne, première colonne large */
+.prog-table { table-layout: fixed; }
+.prog-table th:first-child, .prog-table td:first-child { width: auto; overflow-wrap: break-word; word-break: normal; }
+.prog-table th.r, .prog-table td.amount { width: 110px; }
+.prog-table th:last-child:not(.r), .prog-table td:last-child:not(.amount):not(:first-child) { width: 78px; }
+@media (max-width: 600px) {
+  .prog-table th.r, .prog-table td.amount { width: 72px; min-width: 0; font-size: 12px; }
+  .prog-table th:last-child:not(.r), .prog-table td:last-child:not(.amount):not(:first-child) { width: 50px; }
+  .prog-table td, .prog-table th { padding-left: 6px; padding-right: 6px; }
+}
+@media (max-width: 360px) {
+  .prog-table th.r, .prog-table td.amount { width: 62px; font-size: 11px; }
+  .prog-table th:last-child:not(.r), .prog-table td:last-child:not(.amount):not(:first-child) { width: 44px; }
+}
+/* ajustements colonnes chiffres */
+.prog-table td.amount { white-space: normal; }
+.prog-table th.r, .prog-table td.amount { width: 125px; }
+@media (max-width: 600px) {
+  .prog-table th.r, .prog-table td.amount { width: 82px; }
+  .prog-table th { font-size: 10px; }
+  .prog-table th.r { overflow-wrap: anywhere; }
+}
+@media (max-width: 360px) {
+  .prog-table th.r, .prog-table td.amount { width: 70px; }
+}
+@media (max-width: 600px) {
+  .prog-table th.r { font-size: 10px; overflow-wrap: normal; padding-left: 4px; padding-right: 4px; }
+}
+/* tableaux côte à côte sur grand écran : colonnes de chiffres resserrées */
+@media (min-width: 1025px) {
+  .prog-table th.r, .prog-table td.amount { width: 92px; }
+  .prog-table th:last-child:not(.r), .prog-table td:last-child:not(.amount):not(:first-child) { width: 78px; }
+}
+/* largeur utile */
+.wrap { max-width: 1280px; }
+@media (max-width: 1024px) { body { padding: 1.25rem; } }
+@media (max-width: 600px) { body { padding: 10px; } .prog-table td, .prog-table th { padding-left: 6px; padding-right: 6px; } }
 </style>
 </head>
 <body>
